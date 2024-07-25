@@ -63,7 +63,7 @@ Client code for the API can be generated with the [OpenAPI Generator](https://op
 To generate a Java client:
 
 ```sh
-openapi-generator generate -g java -i ./lb.yaml -o ./output/ -c config.json --additional-properties=useSingleRequestParameter=true
+openapi-generator generate -g java -i ./lb.yaml -o ./output/ -c config.json
 ```
 
 To set and validate the ListenBrainz user token:

@@ -1,0 +1,10 @@
+{
+    "java11": true,
+    "dateLibrary": "java8",
+    "additionalProperties": {
+        "useSingleRequestParameter": true,
+        "artifactDescription": "Java bindings for the listenbrainz.org webservice API",
+        "licenseName": "GNU General Public License v3.0 only",
+        "licenseUrl": "https://www.gnu.org/licenses/gpl-3.0-standalone.html"
+    }
+}

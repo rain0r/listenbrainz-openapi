@@ -204,7 +204,7 @@ paths:
   '/1/user/{user_name}/unfollow':
     $ref: 'paths/social/unfollow.yaml'
   # Recommendations
-  '/1/cf/recommendations/user/{user_name}/recording':
+  '/1/cf/recommendation/user/{user_name}/recording':
     $ref: 'paths/recommendations/recordingRecommendations.yaml'
   '/1/recommendations/feedback/submit':
     $ref: 'paths/recommendations/submitFeedback.yaml'

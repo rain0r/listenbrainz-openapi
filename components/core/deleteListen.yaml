@@ -1,0 +1,8 @@
+required:
+  - 'listened_at'
+  - 'recording_msid'
+properties:
+  listened_at:
+    type: integer
+  recording_msid:
+    type: string

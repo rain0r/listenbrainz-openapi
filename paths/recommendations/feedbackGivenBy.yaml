@@ -1,0 +1,48 @@
+get:
+  operationId: feedbackGivenBy
+  tags:
+    - lbRecommendations
+  summary: |-
+    Get feedback given by user 'user_name'.
+  parameters:
+    - name: user_name
+      description: The MusicBrainz ID of the user whose timeline is being requested.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: rating
+      description: Optional, refer to db/model/recommendation_feedback.py for allowed rating values.
+      in: query
+      required: false
+      schema:
+        type: string
+    - name: count
+      description: Optional, number of recording mbids to return.
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 25 # DEFAULT_ITEMS_PER_GET
+        max: 1000 # MAX_ITEMS_PER_GET
+    - name: offset
+      description: Optional, number of mbids to skip from the beginning, for pagination. Ex. An offset of 5 means the 5 mbids will be skipped.
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 25 # DEFAULT_ITEMS_PER_GET
+        max: 1000 # MAX_ITEMS_PER_GET
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/recommendations/feedbackGivenBy.yaml'
+    '204':
+      description: Recommendations for the user haven't been generated, empty response will be returned.
+    '400':
+      description: Bad request.
+    '404':
+      description: User not found.

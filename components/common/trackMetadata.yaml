@@ -1,0 +1,12 @@
+properties:
+  additional_info:
+    $ref: './additionalInfo.yaml'
+  artist_name:
+    type: string
+  mbid_mapping:
+    $ref: './mbidMapping.yaml'
+  release_name:
+    type: string
+  track_name:
+    type: string
+type: object

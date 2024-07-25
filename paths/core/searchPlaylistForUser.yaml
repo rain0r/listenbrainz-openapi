@@ -1,0 +1,38 @@
+get:
+  operationId: searchPlaylistForUser
+  tags:
+    - lbCore
+  summary: Search for a playlist by name for a user.
+  parameters:
+    - name: playlist_user_name
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: query
+      in: query
+      required: true
+      schema:
+        type: string
+    - name: count
+      description: The number of playlists to return (for pagination).
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 25 # DEFAULT_NUMBER_OF_PLAYLISTS_PER_CALL
+    - name: offset
+      description: The offset of into the list of playlists to return (for pagination).
+      in: query
+      required: false
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/playlists/playlists.yaml'
+    '404':
+      description: The requested user was not found.

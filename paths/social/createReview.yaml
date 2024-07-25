@@ -1,0 +1,44 @@
+post:
+  operationId: createReview
+  tags:
+    - lbSocial
+  summary: |-
+    Creates a CritiqueBrainz review event for the user. This also creates a corresponding review in CritiqueBrainz. Users need to have linked their ListenBrainz account with CritiqueBrainz first to use this endpoint successfully.
+  parameters:
+    - name: user_name
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            metadata:
+              properties:
+                entity_name:
+                  type: string
+                entity_id:
+                  type: string
+                entity_type:
+                  type: string
+                text:
+                  type: string
+                language:
+                  type: string
+                rating:
+                  type: integer
+              type: object
+    required: true
+  responses:
+    '200':
+      description: Successful query, message has been posted!
+    '400':
+      description: Bad request.
+    '403':
+      description: Forbidden, you have not linked with a CritiqueBrainz account.
+    '404':
+      description: User not found.
+  security:
+    - ApiKeyAuth: []

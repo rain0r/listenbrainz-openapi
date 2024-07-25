@@ -1,0 +1,51 @@
+get:
+  operationId: lbRadioTags
+  tags:
+    - lbCore
+  summary: Get recordings for use in LB radio with the specified tags that match the requested criteria.
+  parameters:
+    - name: tag
+      description: The MusicBrainz tag to fetch recordings for, this parameter can be specified multiple times. if more than one tag is specified, the operator param should also be specified.
+      in: query
+      required: true
+      schema:
+        type: string
+    - name: operator
+      description: Specify AND to retrieve recordings that have all the tags, otherwise specify OR to retrieve recordings that have any one of the tags.
+      in: query
+      required: false
+      schema:
+        $ref: '../../lb.yaml#/components/schemas/Operator'
+    - name: pop_begin
+      description: Popularity range percentage lower bound. A popularity range is given to narrow down the recordings into a smaller target group. The most popular recording(s) on LB have a pop percent of 100. The least popular recordings have a score of 0. This range is not coupled to the specified mode, but the mode would often determine the popularity range, so that less popular recordings can be returned on the medium and harder modes.
+      in: query
+      required: true
+      schema:
+        type: integer
+        min: 0
+        max: 100
+    - name: pop_end
+      description: Popularity range percentage upper bound.
+      in: query
+      required: true
+      schema:
+        type: integer
+        min: 0
+        max: 100
+    - name: count
+      description: Optional, number of listens to return.
+      in: query
+      required: true
+      schema:
+        type: integer
+        default: 25 # DEFAULT_ITEMS_PER_GET
+        max: 1000 # MAX_ITEMS_PER_GET
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/core/lbRadioTags.yaml'
+    '400':
+      description: Invalid or missing param in request.

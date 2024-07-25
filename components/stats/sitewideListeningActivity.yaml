@@ -1,0 +1,33 @@
+required:
+  - 'payload'
+properties:
+  payload:
+    required:
+      - 'from_ts'
+      - 'last_updated'
+      - 'listening_activity'
+      - 'range'
+      - 'to_ts'
+    properties:
+      from_ts:
+        type: integer
+      last_updated:
+        type: integer
+      listening_activity:
+        type: array
+        items:
+          type: object
+          properties:
+            from_ts:
+              type: integer
+            listen_count:
+              type: integer
+            time_range:
+              type: string
+            to_ts:
+              type: integer
+      range:
+        type: string
+      to_ts:
+        type: integer
+    type: object

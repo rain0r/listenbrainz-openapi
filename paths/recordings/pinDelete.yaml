@@ -1,0 +1,21 @@
+post:
+  operationId: pinDelete
+  tags:
+    - lbRecordings
+  summary: |-
+    Deletes the pinned recording with given row_id from the server. A user token (found on https://listenbrainz.org/settings/) must be provided in the Authorization header!
+  parameters:
+    - name: row_id
+      in: path
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: Recording unpinned.
+    '401':
+      description: Invalid authorization.
+    '404':
+      description: The requested row_id for the user was not found.
+  security:
+    - ApiKeyAuth: []

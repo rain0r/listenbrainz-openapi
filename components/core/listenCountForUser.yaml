@@ -1,0 +1,10 @@
+required:
+  - 'payload'
+properties:
+  payload:
+    required:
+      - 'count'
+    properties:
+      count:
+        type: integer
+    type: object

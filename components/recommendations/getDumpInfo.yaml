@@ -1,0 +1,8 @@
+required:
+  - 'id'
+  - 'timestamp'
+properties:
+  id:
+    type: integer
+  timestamp:
+    type: string

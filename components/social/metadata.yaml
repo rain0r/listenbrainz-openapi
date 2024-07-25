@@ -1,0 +1,24 @@
+properties:
+  created:
+    type: integer
+  relationship_type:
+    type: string
+  message:
+    type: string
+  blurb_content:
+    type: string
+  inserted_at:
+    type: integer
+  listened_at:
+    type: integer
+  listened_at_iso:
+    type: string
+  playing_now:
+    type: boolean
+  track_metadata:
+    $ref: '../common/trackMetadata.yaml'
+  user_name:
+    type: string
+type: object
+additionalProperties:
+  type: string

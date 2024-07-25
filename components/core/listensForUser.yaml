@@ -1,0 +1,29 @@
+required:
+  - 'payload'
+properties:
+  payload:
+    properties:
+      count:
+        type: integer
+      latest_listen_ts:
+        type: integer
+      listens:
+        type: array
+        items:
+          type: object
+          properties:
+            inserted_at:
+              type: integer
+            listened_at:
+              type: integer
+            recording_msid:
+              type: string
+            track_metadata:
+              $ref: '../common/trackMetadata.yaml'
+            user_name:
+              type: string
+      oldest_listen_ts:
+        type: integer
+      user_id:
+        type: string
+    type: object

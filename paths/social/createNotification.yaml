@@ -1,0 +1,36 @@
+post:
+  operationId: createNotification
+  tags:
+    - lbSocial
+  summary: |-
+    Post a message with a link on a user's timeline. Only approved users are allowed to perform this action.
+  parameters:
+    - name: user_name
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            metadata:
+              properties:
+                message:
+                  type: string
+              type: object
+    required: true
+  responses:
+    '200':
+      description: Successful query, message has been posted!
+    '400':
+      description: Bad request.
+    '401':
+      description: Unauthorized, you do not have permissions to recommend recordings on the behalf of this user.
+    '403':
+      description: Forbidden, you are not an approved user.
+    '404':
+      description: User not found.
+  security:
+    - ApiKeyAuth: []

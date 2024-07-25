@@ -1,0 +1,55 @@
+post:
+  operationId: pin
+  tags:
+    - lbRecordings
+  summary: |-
+    Pin a recording for user. A user token (found on https://listenbrainz.org/settings/) must be provided in the Authorization header! Each request should contain only one pinned recording item in the payload.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            recording_msid:
+              type: string
+              format: uuid
+            recording_mbid:
+              type: string
+              format: uuid
+            blurb_content:
+              type: string
+            pinned_until:
+              type: integer
+              format: int64
+    required: true
+  responses:
+    '200':
+      description: Feedback accepted.
+      content:
+        application/json:
+          schema:
+            properties:
+              pinned_recording:
+                properties:
+                  created:
+                    type: integer
+                  pinned_until:
+                    type: integer
+                  recording_mbid:
+                    type: string
+                    format: uuid
+                  recording_msid:
+                    type: string
+                    format: uuid
+                  row_id:
+                    type: integer
+                  blurb_content:
+                    type: string
+                  track_metadata:
+                    $ref: '../../components/common/trackMetadata.yaml'
+                type: object
+    '400':
+      description: Invalid JSON sent.
+    '401':
+      description: Invalid authorization.
+  security:
+    - ApiKeyAuth: []

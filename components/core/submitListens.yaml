@@ -1,0 +1,17 @@
+required:
+  - 'listen_type'
+  - 'payload'
+properties:
+  listen_type:
+    $ref: '../../lb.yaml#/components/schemas/ListenType'
+  payload:
+    type: array
+    items:
+      type: object
+      properties:
+        listened_at:
+          type: integer
+          format: int32
+          minimum: 0
+        track_metadata:
+          $ref: '../common/trackMetadata.yaml'

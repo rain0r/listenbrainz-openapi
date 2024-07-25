@@ -1,0 +1,48 @@
+get:
+  operationId: getFeedback
+  tags:
+    - lbRecordings
+  summary: |-
+    Get feedback given by user 'user_name'. The format for the JSON returned is defined in our Feedback JSON Documentation.
+
+    If the optional argument score is not given, this endpoint will return all the feedback submitted by the user. Otherwise filters the feedback to be returned by score.
+  parameters:
+    - name: user_name
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: score
+      in: query
+      required: false
+      schema:
+        type: integer
+        description: Optional, If 1 then returns the loved recordings, if -1 returns hated recordings.
+    - name: count
+      in: query
+      required: false
+      schema:
+        type: integer
+        description: Optional, number of feedback items to return.
+        default: 25 # DEFAULT_ITEMS_PER_GET
+        maximum: 1000 # MAX_ITEMS_PER_GET
+    - name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        description: Optional, number of feedback items to skip from the beginning, for pagination. Ex. An offset of 5 means the top 5 feedback will be skipped, defaults to 0.
+        default: 0
+    - name: metadata
+      in: query
+      required: false
+      schema:
+        type: string
+        description: Optional, 'true' or 'false' if this call should return the metadata for the feedback.
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/recordings/feedbackResponse.yaml'

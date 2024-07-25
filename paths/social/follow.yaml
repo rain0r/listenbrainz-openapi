@@ -1,0 +1,21 @@
+post:
+  operationId: follow
+  tags:
+    - lbSocial
+  summary: |-
+    Follow the user 'user_name'. A user token (found on https://listenbrainz.org/settings/ ) must be provided in the Authorization header!
+  parameters:
+    - name: user_name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Successfully followed the user 'user_name'.
+    '400':
+      description: Already following the user user_name, or trying to follow yourself.
+    '401':
+      description: Invalid authorization. See error message for details.
+  security:
+    - ApiKeyAuth: []

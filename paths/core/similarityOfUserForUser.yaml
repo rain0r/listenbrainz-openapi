@@ -1,0 +1,25 @@
+get:
+  operationId: similarityOfUserForUser
+  tags:
+    - lbCore
+  summary: Get the similarity of 'user_name' and 'other_user_name', based on their listening history.
+  parameters:
+    - name: user_name
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: other_user_name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/core/similarityOfUserForUser.yaml'
+    '404':
+      description: The requested user was not found.

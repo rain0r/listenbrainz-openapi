@@ -1,0 +1,32 @@
+get:
+  operationId: fetchPlaylist
+  tags:
+    - lbPlaylists
+  summary: Fetch the given playlist.
+  parameters:
+    - name: playlist_mbid
+      description: The playlist mbid to fetch.
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: fetch_metadata
+      description: Optional, pass value ‘false' to skip lookup up recording metadata.
+      in: query
+      required: false
+      schema:
+        type: boolean
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            properties:
+              playlist:
+                $ref: '../../components/playlists/playlist.yaml'
+    '401':
+      description: Invalid authorization. See error message for details.
+    '404':
+      description: Playlist not found.

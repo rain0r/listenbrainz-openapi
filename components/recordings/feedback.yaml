@@ -1,0 +1,15 @@
+properties:
+  created:
+    type: integer
+  recording_mbid:
+    type: string
+    format: uuid
+  recording_msid:
+    type: string
+    format: uuid
+  score:
+    type: integer
+  track_metadata:
+    $ref: '../common/trackMetadata.yaml'
+  user_id:
+    type: string

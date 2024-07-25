@@ -1,0 +1,37 @@
+post:
+  operationId: editPlaylist
+  tags:
+    - lbPlaylists
+  summary: |-
+    Create a playlist. The playlist must be in JSPF format with MusicBrainz extensions, which is defined here: https://musicbrainz.org/doc/jspf . To create an empty playlist, you can send an empty playlist with only the title field filled out. If you would like to create a playlist populated with recordings, each of the track items in the playlist must have an identifier element that contains the MusicBrainz recording that includes the recording MBID.
+
+    When creating a playlist, only the playlist title and the track identifier elements will be used - all other elements in the posted JSPF wil be ignored.
+
+    If a created_for field is found and the user is not an approved playlist bot, then a 403 forbidden will be raised.
+  parameters:
+    - name: playlist_mbid
+      description: The playlist mbid to edit.
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            playlist:
+              $ref: '../../components/playlists/playlist.yaml'
+    required: true
+  responses:
+    '200':
+      description: Playlist accepted.
+    '400':
+      description: Invalid JSON sent.
+    '401':
+      description: Invalid authorization.
+    '403':
+      description: The submitting user is not allowed to create playlists for other users.
+  security:
+    - ApiKeyAuth: []

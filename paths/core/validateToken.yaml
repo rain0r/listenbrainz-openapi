@@ -1,0 +1,16 @@
+get:
+  tags:
+    - lbCore
+  summary: Check whether a User Token is a valid entry in the database.
+  operationId: validateToken
+  responses:
+    '200':
+      description: The user token is valid/invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/core/validateToken.yaml'
+    '400':
+      description: No token was sent to the endpoint.
+  security:
+    - ApiKeyAuth: []

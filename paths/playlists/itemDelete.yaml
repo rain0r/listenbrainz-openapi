@@ -1,0 +1,37 @@
+post:
+  operationId: itemDelete
+  tags:
+    - lbPlaylists
+  summary: Delete an item in a playlist.
+  description: |-
+    To delete an item in a playlist, the POST data needs to specify the recording MBID and current index of the track to delete, and how many tracks from that position should be moved deleted.
+  parameters:
+    - name: playlist_mbid
+      description: The playlist mbid to fetch.
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            index:
+              type: integer
+            count:
+              type: integer
+    required: true
+  responses:
+    '200':
+      description: Playlist accepted.
+    '400':
+      description: Invalid JSON sent.
+    '401':
+      description: Invalid authorization.
+    '403':
+      description: The requesting user was not allowed to carry out this operation.
+  security:
+    - ApiKeyAuth: []

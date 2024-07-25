@@ -1,0 +1,30 @@
+get:
+  operationId: listeningActivityForUser
+  tags:
+    - lbStats
+  summary: Get the listening activity for user 'user_name'.
+  parameters:
+    - name: user_name
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: range
+      in: query
+      required: false
+      schema:
+        $ref: '../../lb.yaml#/components/schemas/AllowedStatisticsRange'
+        default: all_time
+  responses:
+    '200':
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/stats/listeningActivityForUser.yaml'
+    '204':
+      description: Statistics for the user haven't been calculated, empty response will be returned.
+    '400':
+      description: Bad request.
+    '404':
+      description: User not found.

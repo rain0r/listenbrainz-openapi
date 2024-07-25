@@ -1,0 +1,20 @@
+get:
+  operationId: listenCountForUser
+  tags:
+    - lbCore
+  summary: Get the number of listens for a user 'user_name'.
+  parameters:
+    - name: user_name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Yay, you have listen counts!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/core/listenCountForUser.yaml'
+    '404':
+      description: The requested user was not found.

@@ -1,0 +1,13 @@
+required:
+  - 'payload'
+properties:
+  payload:
+    required:
+      - 'similarity'
+      - 'user_name'
+    properties:
+      similarity:
+        type: integer
+      user_name:
+        type: string
+    type: object

@@ -1,0 +1,72 @@
+properties:
+  album:
+    type: string
+  annotation:
+    type: string
+  creator:
+    type: string
+  date:
+    type: string
+  duration:
+    type: integer
+  extension:
+    $ref: './playlist-extension.yaml'
+  identifier:
+    type: string
+  title:
+    type: string
+  track:
+    type: array
+    items:
+      type: object
+      properties:
+        album:
+          type: string
+        creator:
+          type: string
+        duration:
+          type: integer
+        extension:
+          required:
+            - 'https://musicbrainz.org/doc/jspf#track'
+          properties:
+            https://musicbrainz.org/doc/jspf#track:
+              properties:
+                artist_identifiers:
+                  type: array
+                  items:
+                    type: string
+                release_identifier:
+                  type: string
+                added_at:
+                  type: string
+                added_by:
+                  type: string
+                additional_metadata:
+                  properties:
+                    caa_release_mbid:
+                      type: string
+                      format: uuid
+                    caa_id:
+                      type: integer
+                    artists:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          artist_credit_name:
+                            type: string
+                          artist_mbid:
+                            type: string
+                            format: uuid
+                          join_phrase:
+                            type: string
+                  type: object
+              type: object
+          type: object
+        identifier:
+          type: array
+          items:
+            type: string
+        title:
+          type: string

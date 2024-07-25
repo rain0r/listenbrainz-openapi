@@ -1,0 +1,20 @@
+post:
+  tags:
+    - lbCore
+  summary: Delete a particular listen from a user's listen history.
+  operationId: deleteListen
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/core/deleteListen.yaml'
+    required: true
+  responses:
+    '200':
+      description: Listen deleted.
+    '400':
+      description: Invalid JSON sent.
+    '401':
+      description: Invalid authorization.
+  security:
+    - ApiKeyAuth: []

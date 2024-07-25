@@ -1,0 +1,10 @@
+required:
+  - 'users'
+properties:
+  users:
+    type: array
+    items:
+      type: object
+      properties:
+        user_name:
+          type: string

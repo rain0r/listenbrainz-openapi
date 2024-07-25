@@ -1,0 +1,20 @@
+get:
+  operationId: recommendationPlaylistsForUser
+  tags:
+    - lbCore
+  summary: Fetch recommendation playlist metadata in JSPF format without recordings for 'playlist_user_name'. This endpoint only lists playlists that are to be shown on the listenbrainz.org recommendations pages.
+  parameters:
+    - name: playlist_user_name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Success.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/playlists/playlists.yaml'
+    '404':
+      description: User not found.

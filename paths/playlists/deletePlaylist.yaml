@@ -1,0 +1,26 @@
+post:
+  operationId: deletePlaylist
+  tags:
+    - lbPlaylists
+  summary: Delete a playlist.
+  description: |-
+    POST body data does not need to contain anything.
+  parameters:
+    - name: playlist_mbid
+      description: The playlist mbid to fetch.
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      description: Playlist deleted.
+    '401':
+      description: Invalid authorization.
+    '403':
+      description: The requesting user was not allowed to carry out this operation.
+    '404':
+      description: Playlist not found.
+  security:
+    - ApiKeyAuth: []

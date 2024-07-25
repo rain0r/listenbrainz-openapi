@@ -1,0 +1,30 @@
+get:
+  operationId: sitewideArtistMap
+  tags:
+    - lbStats
+  summary: Get sitewide top recordings.
+  parameters:
+    - name: range
+      in: query
+      required: false
+      schema:
+        $ref: '../../lb.yaml#/components/schemas/AllowedStatisticsRange'
+        default: all_time
+    - name: force_recalculate
+      in: query
+      description: Optional, recalculate the data instead of returning the cached result.
+      required: false
+      schema:
+        type: boolean
+        default: false
+  responses:
+    '200':
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/stats/sitewideArtistMap.yaml'
+    '204':
+      description: Statistics haven't been calculated, empty response will be returned.
+    '400':
+      description: Bad request.

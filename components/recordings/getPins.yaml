@@ -1,0 +1,35 @@
+required:
+  - 'count'
+  - 'offset'
+  - 'pinned_recordings'
+  - 'user_name'
+properties:
+  count:
+    type: integer
+  offset:
+    type: integer
+  pinned_recordings:
+    type: array
+    items:
+      type: object
+      properties:
+        blurb_content:
+          type: string
+        created:
+          type: integer
+        pinned_until:
+          type: integer
+        recording_mbid:
+          type: string
+          format: uuid
+        recording_msid:
+          type: string
+        row_id:
+          type: integer
+          format: uuid
+        track_metadata:
+          $ref: '../../components/common/trackMetadata.yaml'
+  total_count:
+    type: integer
+  user_name:
+    type: string

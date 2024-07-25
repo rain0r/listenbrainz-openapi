@@ -1,0 +1,21 @@
+get:
+  operationId: latestImport
+  tags:
+    - lbCore
+  summary: Get the timestamp of the newest listen submitted by a user in previous imports to ListenBrainz.
+  parameters:
+    - name: user_name
+      description: The MusicBrainz ID of the user whose data is needed.
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/core/latestImport.yaml'
+  security:
+    - ApiKeyAuth: []

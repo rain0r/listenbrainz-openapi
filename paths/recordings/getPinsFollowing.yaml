@@ -1,0 +1,38 @@
+get:
+  operationId: getPinsFollowing
+  tags:
+    - lbRecordings
+  summary: |-
+    Get a list containing the active pinned recordings for all users in a user's user_name following list. The returned pinned recordings are sorted in descending order of the time they were pinned.
+  parameters:
+    - name: user_name
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: count
+      in: query
+      required: false
+      schema:
+        type: integer
+        description: Optional, number of feedback items to return.
+        default: 25 # DEFAULT_ITEMS_PER_GET
+        maximum: 1000 # MAX_ITEMS_PER_GET
+    - name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        description: Optional, number of pinned recording items to skip from the beginning, for pagination. Ex. An offset of 5 means the top 5 feedback will be skipped, defaults to 0.
+        default: 0
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/recordings/getPins.yaml'
+    '400':
+      description: Invalid query parameters, see error message for details.
+    '404':
+      description: The requested user was not found.

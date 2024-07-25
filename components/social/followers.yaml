@@ -1,0 +1,10 @@
+required:
+  - 'followers'
+  - 'user'
+properties:
+  followers:
+    type: array
+    items:
+      type: string
+  user:
+    type: string

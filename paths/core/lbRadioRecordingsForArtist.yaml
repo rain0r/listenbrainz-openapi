@@ -1,0 +1,55 @@
+get:
+  operationId: lbRadioRecordingsForArtist
+  tags:
+    - lbCore
+  summary: Get recordings for use in LB radio with the given seed artist. The endpoint returns a dict of all the similar artists, including the seed artist. For each artists, there will be a list of dicts that contain recording_mbid, similar_artist_mbid and total_listen_count.
+  parameters:
+    - name: seed_artist_mbid
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: mode
+      description: The mode that LB radio should use. Must be easy, medium or hard.
+      in: query
+      required: true
+      schema:
+        $ref: '../../lb.yaml#/components/schemas/Mode'
+    - name: max_similar_artists
+      description: The maximum number of similar artists to return recordings for.
+      in: query
+      required: true
+      schema:
+        type: integer
+    - name: max_recordings_per_artist
+      description: The maximum number of recordings to return for each artist. If there are aren’t enough recordings, all available recordings will be returned.
+      in: query
+      required: true
+      schema:
+        type: integer
+    - name: pop_begin
+      description: Popularity range percentage lower bound. A popularity range is given to narrow down the recordings into a smaller target group. The most popular recording(s) on LB have a pop percent of 100. The least popular recordings have a score of 0. This range is not coupled to the specified mode, but the mode would often determine the popularity range, so that less popular recordings can be returned on the medium and harder modes.
+      in: query
+      required: true
+      schema:
+        type: integer
+        min: 0
+        max: 100
+    - name: pop_end
+      description: Popularity range percentage upper bound.
+      in: query
+      required: true
+      schema:
+        type: integer
+        min: 0
+        max: 100
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/core/lbRadioRecordingsForArtist.yaml'
+    '400':
+      description: Invalid or missing param in request.

@@ -1,0 +1,18 @@
+required:
+  - 'feedback'
+  - 'user_name'
+properties:
+  feedback:
+    type: array
+    items:
+      type: object
+      properties:
+        created:
+          type: integer
+        rating:
+          type: string
+        recording_mbid:
+          type: string
+          format: uuid
+  user_name:
+    type: string

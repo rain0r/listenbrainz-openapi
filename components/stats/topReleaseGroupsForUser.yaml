@@ -1,0 +1,34 @@
+required:
+  - 'payload'
+properties:
+  payload:
+    required:
+      - 'count'
+      - 'from_ts'
+      - 'last_updated'
+      - 'offset'
+      - 'range'
+      - 'release_groups'
+      - 'to_ts'
+      - 'total_release_group_count'
+      - 'user_id'
+    properties:
+      count:
+        type: integer
+      from_ts:
+        type: integer
+      last_updated:
+        type: integer
+      offset:
+        type: integer
+      range:
+        type: string
+      release_groups:
+        $ref: './releaseGroups.yaml'
+      to_ts:
+        type: integer
+      total_release_group_count:
+        type: integer
+      user_id:
+        type: string
+    type: object

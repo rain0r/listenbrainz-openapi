@@ -1,0 +1,40 @@
+post:
+  operationId: recommendRecording
+  tags:
+    - lbSocial
+  summary: |-
+    Make the user recommend a recording to their followers.
+  parameters:
+    - name: user_name
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            metadata:
+              properties:
+                recording_msid:
+                  type: string
+                  format: uuid
+                recording_mbid:
+                  type: string
+                  format: uuid
+              type: object
+    required: true
+  responses:
+    '200':
+      description: Successful query, recording has been recommended!
+    '400':
+      description: Bad request.
+    '401':
+      description: Unauthorized, you do not have permissions to recommend recordings on the behalf of this user.
+    '403':
+      description: Forbidden, you are not an approved user.
+    '404':
+      description: User not found.
+  security:
+    - ApiKeyAuth: []

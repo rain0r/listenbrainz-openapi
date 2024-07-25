@@ -1,0 +1,15 @@
+additionalProperties:
+  type: array
+  items:
+    type: object
+    properties:
+      recording_mbid:
+        type: string
+        format: uuid
+      similar_artist_mbid:
+        type: string
+        format: uuid
+      similar_artist_name:
+        type: string
+      total_listen_count:
+        type: integer

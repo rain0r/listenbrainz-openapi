@@ -1,0 +1,41 @@
+post:
+  operationId: release
+  tags:
+    - lbPopularity
+  summary: |-
+    Get the total listen count and total unique listeners count for a given release.
+
+    A JSON document with a list of releases and inc string must be POSTed. Up to MAX_ITEMS_PER_GET items can be requested at once.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          required:
+            - 'release_mbids'
+          properties:
+            release_mbids:
+              type: array
+              maxItems: 1000 # MAX_ITEMS_PER_GET
+              items:
+                type: string
+    required: true
+  responses:
+    '200':
+      description: Feedback accepted.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              properties:
+                release_mbid:
+                  type: string
+                  format: uuid
+                total_listen_count:
+                  type: integer
+                total_user_count:
+                  type: integer
+    '400':
+      description: Invalid JSON sent.
+    '401':
+      description: Invalid authorization.

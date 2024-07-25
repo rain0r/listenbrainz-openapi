@@ -1,0 +1,126 @@
+properties:
+  artist_credit_name:
+    type: string
+  artist_mbids:
+    type: array
+    items:
+      type: string
+  metadata:
+    properties:
+      artist:
+        properties:
+          artist_credit_id:
+            type: integer
+          artists:
+            type: array
+            items:
+              type: object
+              properties:
+                area:
+                  type: string
+                artist_mbid:
+                  type: string
+                  format: uuid
+                begin_year:
+                  type: integer
+                join_phrase:
+                  type: string
+                name:
+                  type: string
+                rels:
+                  $ref: '../popularity/rels.yaml'
+                type:
+                  type: string
+          name:
+            type: string
+        type: object
+      recording:
+        properties:
+          length:
+            type: integer
+          name:
+            type: string
+          rels:
+            type: array
+            items:
+              type: object
+              properties:
+                artist_mbid:
+                  type: string
+                  format: uuid
+                artist_name:
+                  type: string
+                instrument:
+                  type: string
+                type:
+                  type: string
+        type: object
+      release:
+        properties:
+          album_artist_name:
+            type: string
+          caa_id:
+            type: integer
+          caa_release_mbid:
+            type: string
+            format: uuid
+          mbid:
+            type: string
+          name:
+            type: string
+          release_group_mbid:
+            type: string
+            format: uuid
+          year:
+            type: integer
+        type: object
+      tag:
+        properties:
+          artist:
+            type: array
+            items:
+              type: object
+              properties:
+                artist_mbid:
+                  type: string
+                  format: uuid
+                count:
+                  type: integer
+                genre_mbid:
+                  type: string
+                  format: uuid
+                tag:
+                  type: string
+          recording:
+            type: array
+            items:
+              type: object
+              properties:
+                count:
+                  type: integer
+                tag:
+                  type: string
+          release_group:
+            type: array
+            items:
+              type: object
+              properties:
+                count:
+                  type: integer
+                genre_mbid:
+                  type: string
+                  format: uuid
+                tag:
+                  type: string
+        type: object
+    type: object
+  recording_mbid:
+    type: string
+    format: uuid
+  recording_name:
+    type: string
+  release_mbid:
+    type: string
+    format: uuid
+  release_name:
+    type: string

@@ -1,0 +1,41 @@
+get:
+  operationId: createCustomCoverArt
+  tags:
+    - lbArt
+  summary: |-
+    Create a custom cover art SVG file from the stats of a given user.
+  parameters:
+    - name: custom_name
+      description: The name of cover art to be generated.
+      in: path
+      required: true
+      schema:
+        $ref: '../../lb.yaml#/components/schemas/CoverTypes'
+    - name: user_name
+      description: The name of the user for whom to create the cover art.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: time_range
+      description: Must be a statistics time range.
+      in: path
+      required: true
+      schema:
+        $ref: '../../lb.yaml#/components/schemas/AllowedStatisticsRange'
+    - name: image_size
+      description: The size of the cover art image.
+      in: path
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: Cover art created successfully.
+      content:
+        image/svg+xml:
+          schema:
+            type: string
+            format: binary
+    '400':
+      description: Invalid JSON or invalid options in JSON passed.

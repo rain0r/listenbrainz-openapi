@@ -1,0 +1,37 @@
+get:
+  operationId: sitewideTopReleaseGroups
+  tags:
+    - lbStats
+  summary: Get sitewide top release groups.
+  parameters:
+    - name: count
+      in: query
+      required: false
+      schema:
+        type: integer
+        description: Optional, number of artists to return.
+        default: 25
+    - name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        description: Optional, number of artists to skip from the beginning, for pagination.
+        default: 0
+    - name: range
+      in: query
+      required: false
+      schema:
+        $ref: '../../lb.yaml#/components/schemas/AllowedStatisticsRange'
+        default: all_time
+  responses:
+    '200':
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/stats/sitewideTopReleaseGroups.yaml'
+    '204':
+      description: Statistics haven't been calculated, empty response will be returned.
+    '400':
+      description: Bad request.

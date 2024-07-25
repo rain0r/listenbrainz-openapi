@@ -1,0 +1,24 @@
+get:
+  operationId: topReleaseGroupForArtist
+  tags:
+    - lbPopularity
+  summary: |-
+    Get the top release groups by listen count for a given artist.
+  parameters:
+    - name: artist_mbid
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/popularity/topReleaseGroupsForArtist.yaml'
+    '400':
+      description: Invalid query parameters, see error message for details.
+    '404':
+      description: The requested user was not found.

@@ -1,0 +1,14 @@
+properties:
+  count:
+    type: integer
+  offset:
+    type: integer
+  playlist_count:
+    type: integer
+  playlists:
+    type: array
+    items:
+      type: object
+      properties:
+        playlist:
+          $ref: './playlist.yaml'

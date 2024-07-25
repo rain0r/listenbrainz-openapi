@@ -1,0 +1,31 @@
+post:
+  operationId: recordingFeedback
+  tags:
+    - lbRecordings
+  summary: |-
+    Submit recording feedback (love/hate) to the server. A user token (found on https://listenbrainz.org/settings/ ) must be provided in the Authorization header! Each request should contain only one feedback in the payload.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            recording_mbid:
+              type: string
+              format: uuid
+            recording_msid:
+              type: string
+              format: uuid
+            score:
+              type: integer
+              minimum: -1
+              maximum: 1
+    required: true
+  responses:
+    '200':
+      description: Feedback accepted.
+    '400':
+      description: Invalid JSON sent.
+    '401':
+      description: Invalid authorization.
+  security:
+    - ApiKeyAuth: []

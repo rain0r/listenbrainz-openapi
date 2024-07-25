@@ -1,0 +1,53 @@
+required:
+  - 'payload'
+properties:
+  payload:
+    required:
+      - 'count'
+      - 'from_ts'
+      - 'last_updated'
+      - 'offset'
+      - 'range'
+      - 'releases'
+      - 'to_ts'
+    properties:
+      count:
+        type: integer
+      from_ts:
+        type: integer
+      last_updated:
+        type: integer
+      offset:
+        type: integer
+      range:
+        type: string
+      releases:
+        type: array
+        items:
+          type: object
+          properties:
+            artists:
+              type: string
+              nullable: true
+            artist_mbids:
+              type: array
+              items:
+                type: string
+                format: uuid
+            artist_name:
+              type: string
+            caa_id:
+              type: integer
+            caa_release_mbid:
+              type: string
+              format: uuid
+            listen_count:
+              type: integer
+            release_mbid:
+              type: string
+              format: uuid
+            release_name:
+              type: string
+      to_ts:
+        type: integer
+    type: object

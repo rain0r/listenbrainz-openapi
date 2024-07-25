@@ -1,0 +1,22 @@
+get:
+  operationId: searchPlaylists
+  tags:
+    - lbPlaylists
+  summary: Search for playlists by name or description. The search query must be at least 3 characters long.
+  parameters:
+    - name: query
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/playlists/playlists.yaml'
+    '400':
+      description: Invalid query string, see error message for details.
+    '401':
+      description: Invalid authorization. See error message for details.

@@ -1,0 +1,26 @@
+required:
+  - 'payload'
+properties:
+  payload:
+    required:
+      - 'count'
+      - 'listens'
+      - 'playing_now'
+      - 'user_id'
+    properties:
+      count:
+        type: integer
+      listens:
+        type: array
+        items:
+          type: object
+          properties:
+            playing_now:
+              type: 'boolean'
+            track_metadata:
+              $ref: '../common/trackMetadata.yaml'
+      playing_now:
+        type: 'boolean'
+      user_id:
+        type: string
+    type: object

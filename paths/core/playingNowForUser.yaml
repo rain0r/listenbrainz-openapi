@@ -1,0 +1,20 @@
+get:
+  operationId: playingNowForUser
+  tags:
+    - lbCore
+  summary: Get the listen being played right now for user 'user_name'
+  parameters:
+    - name: user_name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/core/playingNowForUser.yaml'
+    '404':
+      description: The requested user was not found.

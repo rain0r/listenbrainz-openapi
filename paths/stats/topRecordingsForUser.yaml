@@ -1,0 +1,45 @@
+get:
+  operationId: topRecordingsForUser
+  tags:
+    - lbStats
+  summary: Get top recordings for user 'user_name'.
+  parameters:
+    - name: user_name
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: count
+      in: query
+      required: false
+      schema:
+        type: integer
+        description: 'Optional, number of artists to return'
+        default: 25
+    - name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        description: >-
+          Optional, number of artists to skip from the beginning, for pagination
+        default: 0
+    - name: range
+      in: query
+      required: false
+      schema:
+        $ref: '../../lb.yaml#/components/schemas/AllowedStatisticsRange'
+        default: all_time
+  responses:
+    '200':
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/stats/topRecordingsForUser.yaml'
+    '204':
+      description: Statistics for the user haven't been calculated, empty response will be returned.
+    '400':
+      description: Bad request.
+    '404':
+      description: User not found.

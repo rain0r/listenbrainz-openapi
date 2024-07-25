@@ -1,0 +1,33 @@
+get:
+  operationId: playlistsCreatedForUser
+  tags:
+    - lbPlaylists
+  summary: Fetch playlist metadata in JSPF format without recordings that have been created for the user.
+  parameters:
+    - name: playlist_user_name
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: count
+      in: query
+      required: false
+      schema:
+        type: integer
+        description: The number of playlists to return (for pagination).
+        default: 25 # DEFAULT_NUMBER_OF_PLAYLISTS_PER_CALL
+    - name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        description: The offset of into the list of playlists to return (for pagination).
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/playlists/playlists.yaml'
+    '404':
+      description: The requested user was not found.

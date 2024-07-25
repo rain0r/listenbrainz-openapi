@@ -1,0 +1,27 @@
+required:
+  - 'count'
+  - 'feedback'
+  - 'offset'
+  - 'total_count'
+  - 'user_name'
+properties:
+  count:
+    type: integer
+  feedback:
+    type: array
+    items:
+      type: object
+      properties:
+        created:
+          type: integer
+        rating:
+          type: string
+        recording_mbid:
+          type: string
+          format: uuid
+  offset:
+    type: integer
+  total_count:
+    type: integer
+  user_name:
+    type: string

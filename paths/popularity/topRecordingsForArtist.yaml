@@ -1,0 +1,24 @@
+get:
+  operationId: topRecordingsForArtist
+  tags:
+    - lbPopularity
+  summary: |-
+    Get a list of all recordings ever pinned by a user with given user_name in descending order of the time they were originally pinned.
+  parameters:
+    - name: artist_mbid
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/popularity/topRecordingsForArtist.yaml'
+    '400':
+      description: Invalid query parameters, see error message for details.
+    '404':
+      description: The requested user was not found.

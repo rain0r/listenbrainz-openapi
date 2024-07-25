@@ -1,0 +1,24 @@
+required:
+  - mapping
+  - status
+properties:
+  mapping:
+    required:
+      - created
+      - recording_mbid
+      - recording_msid
+      - user_id
+    properties:
+      created:
+        type: string
+      recording_mbid:
+        type: string
+        format: uuid
+      recording_msid:
+        type: string
+        format: uuid
+      user_id:
+        type: integer
+    type: object
+  status:
+    type: string

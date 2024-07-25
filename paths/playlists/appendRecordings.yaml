@@ -1,0 +1,39 @@
+post:
+  operationId: appendRecordings
+  tags:
+    - lbPlaylists
+  summary: |-
+    Append recordings to an existing playlist by posting a playlist with one of more recordings in it. The playlist must be in JSPF format with MusicBrainz extensions, which is defined here: https://musicbrainz.org/doc/jspf .
+
+    If the offset is provided in the URL, then the recordings will be added at that offset, otherwise they will be added at the end of the playlist.
+  parameters:
+    - name: playlist_mbid
+      description: The playlist mbid to append to.
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: offset
+      description: Offset.
+      in: path
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/playlists/playlist.yaml'
+    required: true
+  responses:
+    '200':
+      description: Playlist accepted.
+    '400':
+      description: Invalid JSON sent, see error message for details.
+    '401':
+      description: Invalid authorization. See error message for details.
+    '403':
+      description: Forbidden. The requesting user was not allowed to carry out this operation.
+  security:
+    - ApiKeyAuth: []

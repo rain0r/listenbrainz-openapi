@@ -1,0 +1,26 @@
+get:
+  operationId: servicesForUser
+  tags:
+    - lbCore
+  summary: Get list of services which are connected to a given user's account.
+  parameters:
+    - name: user_name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/core/servicesForUser.yaml'
+    '401':
+      description: Invalid authorization.
+    '403':
+      description: Forbidden, you do not have permissions to view this user's information.
+    '404':
+      description: The requested user was not found.
+  security:
+    - ApiKeyAuth: []

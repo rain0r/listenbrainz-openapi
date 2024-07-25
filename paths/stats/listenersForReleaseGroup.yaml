@@ -1,0 +1,31 @@
+get:
+  operationId: listenersForReleaseGroup
+  tags:
+    - lbStats
+  summary: Get top listeners for release group 'release_group_mbid'.
+  parameters:
+    - name: release_group_mbid
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: range
+      in: query
+      required: false
+      schema:
+        $ref: '../../lb.yaml#/components/schemas/AllowedStatisticsRange'
+        default: all_time
+  responses:
+    '200':
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/stats/listenersForReleaseGroup.yaml'
+    '204':
+      description: Statistics for the artist haven't been calculated, empty response will be returned.
+    '400':
+      description: Bad request.
+    '404':
+      description: Entity not found.

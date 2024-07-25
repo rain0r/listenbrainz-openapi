@@ -1,0 +1,97 @@
+type: array
+items:
+  type: object
+  properties:
+    artist:
+      properties:
+        artist_credit_id:
+          type: integer
+        artists:
+          type: array
+          items:
+            $ref: '../../components/common/musicBrainzArtist.yaml'
+        name:
+          type: string
+      type: object
+    release:
+      properties:
+        caa_id:
+          type: integer
+        caa_release_mbid:
+          type: string
+          format: uuid
+        rels:
+          type: array
+          items:
+            $ref: '../../components/common/rels.yaml'
+        date:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+      type: object
+    release_color:
+      properties:
+        blue:
+          type: integer
+        green:
+          type: integer
+        red:
+          type: integer
+      type: object
+    release_group:
+      properties:
+        caa_id:
+          type: integer
+        caa_release_mbid:
+          type: string
+          format: uuid
+        date:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        rels:
+          type: array
+          items:
+            $ref: '../../components/common/rels.yaml'
+      type: object
+    release_group_mbid:
+      type: string
+      format: uuid
+    tag:
+      properties:
+        artist:
+          type: array
+          items:
+            type: object
+            properties:
+              artist_mbid:
+                type: string
+                format: uuid
+              count:
+                type: integer
+              genre_mbid:
+                type: string
+                format: uuid
+              tag:
+                type: string
+        release_group:
+          type: array
+          items:
+            type: object
+            properties:
+              count:
+                type: integer
+              genre_mbid:
+                type: string
+                format: uuid
+              tag:
+                type: string
+      type: object
+    total_listen_count:
+      type: integer
+    total_user_count:
+      type: integer

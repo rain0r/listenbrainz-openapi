@@ -1,0 +1,19 @@
+get:
+  operationId: searchUsers
+  tags:
+    - lbCore
+  summary: Search a ListenBrainz-registered user.
+  parameters:
+    - name: search_term
+      description: Input on which search operation is to be performed.
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/core/searchUsers.yaml'

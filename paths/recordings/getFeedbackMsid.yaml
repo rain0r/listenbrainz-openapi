@@ -1,0 +1,39 @@
+get:
+  operationId: getFeedbackMsid
+  tags:
+    - lbRecordings
+  summary: Get feedback for recording with given recording_msid.
+  parameters:
+    - name: recording_msid
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: score
+      in: query
+      required: false
+      schema:
+        type: integer
+        description: Optional, If 1 then returns the loved recordings, if -1 returns hated recordings.
+    - name: count
+      in: query
+      required: false
+      schema:
+        type: integer
+        description: Optional, number of feedback items to return.
+        default: 25 # DEFAULT_ITEMS_PER_GET
+        maximum: 1000 # MAX_ITEMS_PER_GET
+    - name: offset
+      in: query
+      required: false
+      schema:
+        type: integer
+        description: Optional, number of feedback items to skip from the beginning, for pagination. Ex. An offset of 5 means the top 5 feedback will be skipped, defaults to 0.
+        default: 0
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/recordings/feedbackResponse.yaml'

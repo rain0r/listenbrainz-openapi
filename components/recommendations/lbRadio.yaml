@@ -1,0 +1,17 @@
+required:
+  - 'payload'
+properties:
+  payload:
+    required:
+      - 'feedback'
+      - 'jspf'
+    properties:
+      feedback:
+        type: array
+        items:
+          type: string
+      jspf:
+        properties:
+          playlist:
+            $ref: '../playlists/playlist.yaml'
+        type: object

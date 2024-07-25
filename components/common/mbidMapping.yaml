@@ -1,0 +1,32 @@
+properties:
+  artist_mbids:
+    type: array
+    items:
+      type: string
+      format: uuid
+  artists:
+    type: array
+    items:
+      type: object
+      properties:
+        artist_credit_name:
+          type: string
+        artist_mbid:
+          type: string
+          format: uuid
+        join_phrase:
+          type: string
+  caa_id:
+    type: integer
+  caa_release_mbid:
+    type: string
+    format: uuid
+  recording_mbid:
+    type: string
+    format: uuid
+  recording_name:
+    type: string
+  release_mbid:
+    type: string
+    format: uuid
+type: object

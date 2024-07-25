@@ -1,0 +1,13 @@
+type: array
+items:
+  type: object
+  properties:
+    percent:
+      type: integer
+    recording_mbid:
+      type: string
+      format: uuid
+    source:
+      type: string
+    tag_count:
+      type: integer

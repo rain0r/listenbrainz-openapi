@@ -1,0 +1,27 @@
+get:
+  operationId: yearInMusicForUser
+  tags:
+    - lbStats
+  summary: Get sitewide top recordings.
+  parameters:
+    - name: user_name
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: year
+      in: path
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: Successful query, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/stats/yearInMusicForUser.yaml'
+    '204':
+      description: Statistics haven't been calculated, empty response will be returned.
+    '400':
+      description: Bad request.

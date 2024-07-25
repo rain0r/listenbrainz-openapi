@@ -1,0 +1,58 @@
+required:
+  - 'payload'
+properties:
+  payload:
+    required:
+      - 'artist_mbids'
+      - 'artist_name'
+      - 'caa_id'
+      - 'caa_release_mbid'
+      - 'from_ts'
+      - 'last_updated'
+      - 'listeners'
+      - 'release_group_mbid'
+      - 'release_group_name'
+      - 'stats_range'
+      - 'to_ts'
+      - 'total_listen_count'
+      - 'total_user_count'
+    properties:
+      artist_mbids:
+        type: array
+        items:
+          type: string
+          format: uuid
+      artist_name:
+        type: string
+      caa_id:
+        type: integer
+      caa_release_mbid:
+        type: string
+        format: uuid
+      from_ts:
+        type: integer
+      last_updated:
+        type: integer
+      listeners:
+        type: array
+        items:
+          type: object
+          properties:
+            listen_count:
+              type: integer
+            user_name:
+              type: string
+      release_group_mbid:
+        type: string
+        format: uuid
+      release_group_name:
+        type: string
+      stats_range:
+        type: string
+      to_ts:
+        type: integer
+      total_listen_count:
+        type: integer
+      total_user_count:
+        type: integer
+    type: object

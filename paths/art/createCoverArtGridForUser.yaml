@@ -1,0 +1,47 @@
+get:
+  operationId: createCoverArtGridForUser
+  tags:
+    - lbArt
+  summary: |-
+    Create a cover art grid SVG file from the stats of a given user.
+  parameters:
+    - name: user_name
+      description: The name of the user for whom to create the cover art.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: time_range
+      description: Must be a statistics time range.
+      in: path
+      required: true
+      schema:
+        $ref: '../../lb.yaml#/components/schemas/AllowedStatisticsRange'
+    - name: dimension
+      description: The dimension to use for this grid. A grid of dimension 3 has 3 images across and 3 images down, for a total of 9 images.
+      in: path
+      required: true
+      schema:
+        type: integer
+    - name: layout
+      description: The layout to be used for this grid. Layout 0 is always a simple grid, but other layouts may have image images be of different sizes. See https://art.listenbrainz.org for examples of the available layouts.
+      in: path
+      required: true
+      schema:
+        type: integer
+    - name: image_size
+      description: The size of the cover art image.
+      in: path
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: Cover art created successfully.
+      content:
+        image/svg+xml:
+          schema:
+            type: string
+            format: binary
+    '400':
+      description: Invalid JSON or invalid options in JSON passed.

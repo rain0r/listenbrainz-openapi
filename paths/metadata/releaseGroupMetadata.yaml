@@ -1,0 +1,35 @@
+get:
+  operationId: releaseGroupMetadata
+  tags:
+    - lbMetadata
+  summary: |-
+    This endpoint takes in a list of release_group_mbids and returns an array of dicts that contain release_group metadata suitable for showing in a context that requires as much detail about a release_group and the artist. Using the inc parameter, you can control which portions of metadata to fetch.
+  parameters:
+    - name: release_group_mbids
+      in: query
+      description: A comma separated list of release_group_mbids.
+      style: form
+      explode: false
+      required: true
+      schema:
+        type: array
+        items:
+          type: string
+          format: uuid
+    - name: inc
+      description: A space separated list of “artist”, “tag” and/or “release” to indicate which portions of metadata you're interested in fetching. We encourage users to only fetch the data they plan to consume.
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              $ref: '../../components/metadata/releaseGroupMetadata.yaml'
+    '400':
+      description: Invalid query parameters, see error message for details.

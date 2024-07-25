@@ -1,0 +1,13 @@
+required:
+  - 'code'
+  - 'message'
+  - 'valid'
+properties:
+  code:
+    type: integer
+  message:
+    type: string
+  valid:
+    type: 'boolean'
+  user_name:
+    type: string

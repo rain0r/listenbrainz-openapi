@@ -1,0 +1,24 @@
+get:
+  operationId: getManualMapping
+  tags:
+    - lbMetadata
+  summary: |-
+    Get the manual mapping of a recording messybrainz ID that a user added.
+  parameters:
+    - name: recording_msid
+      in: query
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/metadata/getManualMapping.yaml'
+    '404':
+      description: No such mapping for this user/recording msid.
+  security:
+    - ApiKeyAuth: []

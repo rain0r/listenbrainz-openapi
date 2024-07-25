@@ -1,0 +1,64 @@
+required:
+  - 'payload'
+properties:
+  payload:
+    required:
+      - 'releases'
+    properties:
+      releases:
+        type: array
+        items:
+          type: object
+          properties:
+            artist_name:
+              type: string
+            caa_id:
+              type: integer
+            color:
+              type: array
+              items:
+                type: integer
+            dist:
+              type: integer
+            recordings:
+              type: array
+              items:
+                type: object
+                properties:
+                  track_metadata:
+                    required:
+                      - 'additional_info'
+                      - 'artist_name'
+                      - 'release_name'
+                      - 'track_name'
+                    properties:
+                      additional_info:
+                        required:
+                          - 'artist_mbids'
+                          - 'recording_mbid'
+                          - 'release_mbid'
+                        properties:
+                          artist_mbids:
+                            type: array
+                            items:
+                              type: string
+                          recording_mbid:
+                            type: string
+                            format: uuid
+                          release_mbid:
+                            type: string
+                            format: uuid
+                        type: object
+                      artist_name:
+                        type: string
+                      release_name:
+                        type: string
+                      track_name:
+                        type: string
+                    type: object
+            release_mbid:
+              type: string
+              format: uuid
+            release_name:
+              type: string
+    type: object

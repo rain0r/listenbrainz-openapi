@@ -1,0 +1,42 @@
+post:
+  operationId: recording
+  tags:
+    - lbPopularity
+  summary: |-
+    Get the total listen count and total unique listeners count for a given recording.
+
+    A JSON document with a list of recording_mbids and inc string must be POSTed. Up to MAX_ITEMS_PER_GET items can be requested at once.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          required:
+            - 'recording_mbids'
+          properties:
+            recording_mbids:
+              type: array
+              maxItems: 1000 # MAX_ITEMS_PER_GET
+              items:
+                type: string
+                format: uuid
+    required: true
+  responses:
+    '200':
+      description: Feedback accepted.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              properties:
+                recording_mbid:
+                  type: string
+                  format: uuid
+                total_listen_count:
+                  type: integer
+                total_user_count:
+                  type: integer
+    '400':
+      description: Invalid JSON sent.
+    '401':
+      description: Invalid authorization.

@@ -1,0 +1,10 @@
+properties:
+  artist_mbid:
+    type: string
+    format: uuid
+  artist_name:
+    type: string
+  instrument:
+    type: string
+  type:
+    type: string

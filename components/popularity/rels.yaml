@@ -1,0 +1,28 @@
+properties:
+  free streaming:
+    type: string
+  lyrics:
+    type: string
+  official homepage:
+    type: string
+  purchase for download:
+    type: string
+  download for free:
+    type: string
+  purchase for mail-order:
+    type: string
+  social network:
+    type: string
+  streaming:
+    type: string
+  wikidata:
+    type: string
+  youtube:
+    type: string
+  patronage:
+    type: string
+  crowdfunding:
+    type: string
+  blog:
+    type: string
+type: object

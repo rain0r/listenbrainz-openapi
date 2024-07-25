@@ -1,0 +1,26 @@
+get:
+  operationId: lbRadio
+  tags:
+    - lbMisc
+  summary: |-
+    Generate a playlist with LB Radio.
+  parameters:
+    - name: prompt
+      description: The LB Radio prompt from which to generate playlists.
+      in: query
+      required: true
+      schema:
+        type: string
+    - name: mode
+      description: The mode that LB radio should use. Must be easy, medium or hard.
+      in: query
+      required: true
+      schema:
+        $ref: '../../lb.yaml#/components/schemas/Mode'
+  responses:
+    '200':
+      description: Success.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/recommendations/lbRadio.yaml'

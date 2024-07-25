@@ -1,0 +1,38 @@
+get:
+  operationId: listensForUser
+  tags:
+    - lbCore
+  summary: Get listens for user 'user_name'.
+  parameters:
+    - name: user_name
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: max_ts
+      description: If you specify a 'max_ts' timestamp, listens with listened_at less than (but not including) this value will be returned.
+      in: query
+      schema:
+        type: integer
+    - name: min_ts
+      description: If you specify a 'min_ts' timestamp, listens with listened_at greater than (but not including) this value will be returned.
+      in: query
+      schema:
+        type: integer
+    - name: count
+      description: Optional, number of listens to return.
+      in: query
+      required: false
+      schema:
+        type: integer
+        default: 25 # DEFAULT_ITEMS_PER_GET
+        max: 1000 # MAX_ITEMS_PER_GET
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/core/listensForUser.yaml'
+    '404':
+      description: The requested user was not found.

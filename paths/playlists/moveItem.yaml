@@ -1,0 +1,41 @@
+post:
+  operationId: moveItem
+  tags:
+    - lbPlaylists
+  summary: |-
+    To move an item in a playlist, the POST data needs to specify the recording MBID and current index of the track to move (from), where to move it to (to) and how many tracks from that position should be moved (count).
+  parameters:
+    - name: playlist_mbid
+      description: The playlist mbid to append to.
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            mbid:
+              type: string
+              format: uuid
+            from:
+              type: integer
+            to:
+              type: integer
+            count:
+              type: integer
+    required: true
+  responses:
+    '200':
+      description: Move operation succeeded.
+    '400':
+      description: Invalid JSON sent, see error message for details.
+    '401':
+      description: Invalid authorization. See error message for details.
+    '403':
+      description: Forbidden. The requesting user was not allowed to carry out this operation.
+  security:
+    - ApiKeyAuth: []

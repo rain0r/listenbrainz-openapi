@@ -1,0 +1,22 @@
+post:
+  operationId: createCoverArtGrid
+  tags:
+    - lbArt
+  summary: |-
+    Create a cover art grid SVG file from the POSTed JSON data to this endpoint.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/art/createCoverArtGrid.yaml'
+    required: true
+  responses:
+    '200':
+      description: Cover art created successfully.
+      content:
+        image/svg+xml:
+          schema:
+            type: string
+            format: binary
+    '400':
+      description: Invalid JSON or invalid options in JSON passed.

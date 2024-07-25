@@ -1,0 +1,20 @@
+post:
+  tags:
+    - lbCore
+  summary: Submit listens to the server.
+  operationId: submitListens
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/core/submitListens.yaml'
+    required: true
+  responses:
+    '200':
+      description: Listen(s) accepted.
+    '400':
+      description: Invalid JSON sent.
+    '401':
+      description: Invalid authorization.
+  security:
+    - ApiKeyAuth: []

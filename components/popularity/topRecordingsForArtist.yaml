@@ -1,0 +1,52 @@
+type: array
+items:
+  type: object
+  properties:
+    artist_mbids:
+      type: array
+      items:
+        type: string
+    artist_name:
+      type: string
+    artists:
+      type: array
+      items:
+        type: object
+        properties:
+          artist_credit_name:
+            type: string
+          artist_mbid:
+            type: string
+            format: uuid
+          join_phrase:
+            type: string
+    caa_id:
+      type: integer
+    caa_release_mbid:
+      type: string
+      format: uuid
+    length:
+      type: integer
+    recording_mbid:
+      type: string
+      format: uuid
+    recording_name:
+      type: string
+    release_color:
+      properties:
+        blue:
+          type: integer
+        green:
+          type: integer
+        red:
+          type: integer
+      type: object
+    release_mbid:
+      type: string
+      format: uuid
+    release_name:
+      type: string
+    total_listen_count:
+      type: integer
+    total_user_count:
+      type: integer

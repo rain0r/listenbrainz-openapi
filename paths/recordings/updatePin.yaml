@@ -1,0 +1,29 @@
+post:
+  operationId: updatePin
+  tags:
+    - lbRecordings
+  summary: |-
+    Updates the blurb content of a pinned recording for the user. A user token (found on https://listenbrainz.org/settings/) must be provided in the Authorization header! Each request should contain only one pinned recording item in the payload.
+  parameters:
+    - name: row_id
+      in: path
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            blurb_content:
+              type: string
+    required: true
+  responses:
+    '200':
+      description: Feedback accepted.
+    '400':
+      description: Invalid JSON sent.
+    '401':
+      description: Invalid authorization.
+  security:
+    - ApiKeyAuth: []

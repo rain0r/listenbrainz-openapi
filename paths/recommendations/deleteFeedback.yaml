@@ -1,0 +1,25 @@
+post:
+  operationId: deleteFeedback
+  tags:
+    - lbRecommendations
+  summary: |-
+    Delete feedback for a user. A user token (found on https://listenbrainz.org/settings/ ) must be provided in the Authorization header! Each request should contain only one recording mbid in the payload.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            recording_mbid:
+              type: string
+              format: uuid
+          type: object
+    required: true
+  responses:
+    '200':
+      description: Feedback accepted.
+    '400':
+      description: Invalid JSON sent.
+    '401':
+      description: Invalid authorization.
+  security:
+    - ApiKeyAuth: []

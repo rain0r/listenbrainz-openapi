@@ -1,0 +1,39 @@
+properties:
+  area:
+    type: string
+  artist_mbid:
+    type: string
+    format: uuid
+  begin_year:
+    type: integer
+  gender:
+    type: string
+  mbid:
+    type: string
+  name:
+    type: string
+  rels:
+    $ref: '../popularity/rels.yaml'
+  tag:
+    required:
+      - 'artist'
+    properties:
+      artist:
+        type: array
+        items:
+          type: object
+          properties:
+            artist_mbid:
+              type: string
+              format: uuid
+            count:
+              type: integer
+            genre_mbid:
+              type: string
+              format: uuid
+            tag:
+              type: string
+    type: object
+  type:
+    type: string
+type: object

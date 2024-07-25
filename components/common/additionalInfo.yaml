@@ -1,0 +1,83 @@
+type: object
+properties:
+  media_player:
+    type: string
+  media_player_version:
+    type: string
+  submission_client:
+    type: string
+  submission_client_version:
+    type: string
+  music_service:
+    type: string
+  music_service_name:
+    type: string
+  origin_url:
+    type: string
+  release_mbid:
+    type: string
+    format: uuid
+  artist_mbids:
+    type: array
+    items:
+      type: string
+      format: uuid
+  recording_mbid:
+    type: string
+    format: uuid
+  recording_msid:
+    type: string
+    format: uuid
+  tags:
+    type: array
+    items:
+      type: string
+  duration:
+    type: integer
+  duration_ms:
+    type: integer
+  tracknumber:
+    type: integer
+  release_group_mbid:
+    type: string
+    format: uuid
+  track_mbid:
+    type: string
+    format: uuid
+  work_mbids:
+    type: array
+    items:
+      type: string
+      format: uuid
+  isrc:
+    type: string
+  spotify_id:
+    type: string
+  discnumber:
+    type: integer
+  listening_from:
+    type: string
+  release_artist_name:
+    type: string
+  release_artist_names:
+    type: array
+    items:
+      type: string
+  spotify_album_artist_ids:
+    type: array
+    items:
+      type: string
+  spotify_album_id:
+    type: string
+  spotify_artist_ids:
+    type: array
+    items:
+      type: string
+  youtube_id:
+    type: string
+  albumartist:
+    type: string
+  comment:
+    type: string
+  date:
+    type: string

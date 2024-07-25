@@ -1,0 +1,20 @@
+get:
+  operationId: color
+  tags:
+    - lbMisc
+  summary: |-
+    Fetch a list of releases that have cover art that has a predominant color that is close to the given color.
+  parameters:
+    - name: color
+      description: Color must be a 6 digit hex color code.
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Success.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/recommendations/color.yaml'

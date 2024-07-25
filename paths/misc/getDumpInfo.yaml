@@ -1,0 +1,24 @@
+get:
+  operationId: getDumpInfo
+  tags:
+    - lbMisc
+  summary: |-
+    Get information about ListenBrainz data dumps. You need to pass the id parameter in a GET request to get data about that particular dump.
+  parameters:
+    - name: id
+      description: Integer specifying the ID of the dump, if not provided, the endpoint returns information about the latest data dump.
+      in: query
+      required: false
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: Success.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/recommendations/getDumpInfo.yaml'
+    '400':
+      description: You did not provide a valid dump ID. See error message for details.
+    '404':
+      description: Dump with given ID does not exist.

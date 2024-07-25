@@ -1,0 +1,10 @@
+required:
+  - 'musicbrainz_id'
+  - 'latest_import'
+properties:
+  musicbrainz_id:
+    type: string
+    description: the MusicBrainz ID of the user
+  latest_import:
+    type: string
+    description: 'the timestamp of the newest listen submitted in previous imports. Defaults to 0'

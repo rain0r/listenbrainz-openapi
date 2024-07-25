@@ -1,0 +1,195 @@
+required:
+  - 'payload'
+properties:
+  payload:
+    required:
+      - 'data'
+      - 'user_name'
+    properties:
+      data:
+        required:
+          - 'artist_map'
+          - 'day_of_week'
+          - 'listens_per_day'
+          - 'most_listened_year'
+          - 'new_releases_of_top_artists'
+          - 'playlist-top-discoveries-for-year'
+          - 'playlist-top-missed-recordings-for-year'
+          - 'similar_users'
+          - 'top_artists'
+          - 'top_genres'
+          - 'top_recordings'
+          - 'top_release_groups'
+          - 'total_artists_count'
+          - 'total_listen_count'
+          - 'total_listening_time'
+          - 'total_new_artists_discovered'
+          - 'total_recordings_count'
+          - 'total_release_groups_count'
+        properties:
+          artist_map:
+            type: array
+            items:
+              type: object
+              properties:
+                artist_count:
+                  type: integer
+                artists:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      artist_mbid:
+                        type: string
+                        format: uuid
+                      artist_name:
+                        type: string
+                      listen_count:
+                        type: integer
+                country:
+                  type: string
+                listen_count:
+                  type: integer
+          day_of_week:
+            type: string
+          listens_per_day:
+            type: array
+            items:
+              type: object
+              properties:
+                from_ts:
+                  type: integer
+                listen_count:
+                  type: integer
+                time_range:
+                  type: string
+                to_ts:
+                  type: integer
+          most_listened_year:
+            additionalProperties:
+              type: integer
+            type: object
+          new_releases_of_top_artists:
+            type: array
+            items:
+              type: object
+              properties:
+                artist_credit_mbids:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                artist_credit_name:
+                  type: string
+                artists:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      artist_credit_name:
+                        type: string
+                      artist_mbid:
+                        type: string
+                        format: uuid
+                      join_phrase:
+                        type: string
+                caa_id:
+                  type: integer
+                caa_release_mbid:
+                  type: string
+                  format: uuid
+                release_group_mbid:
+                  type: string
+                  format: uuid
+                title:
+                  type: string
+          playlist-top-discoveries-for-year:
+            $ref: '../playlists/playlist.yaml'
+          playlist-top-missed-recordings-for-year:
+            $ref: '../playlists/playlist.yaml'
+          similar_users:
+            additionalProperties:
+              type: integer
+            type: object
+          top_artists:
+            type: array
+            items:
+              type: object
+              properties:
+                artist_mbid:
+                  type: string
+                  format: uuid
+                artist_name:
+                  type: string
+                listen_count:
+                  type: integer
+          top_genres:
+            type: array
+            items:
+              type: object
+              properties:
+                genre:
+                  type: string
+                genre_count:
+                  type: integer
+                genre_count_percent:
+                  type: integer
+          top_recordings:
+            type: array
+            items:
+              type: object
+              properties:
+                artist_mbids:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                artist_name:
+                  type: string
+                artists:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      artist_credit_name:
+                        type: string
+                      artist_mbid:
+                        type: string
+                        format: uuid
+                      join_phrase:
+                        type: string
+                caa_id:
+                  type: integer
+                caa_release_mbid:
+                  type: string
+                  format: uuid
+                listen_count:
+                  type: integer
+                recording_mbid:
+                  type: string
+                  format: uuid
+                release_mbid:
+                  type: string
+                  format: uuid
+                release_name:
+                  type: string
+                track_name:
+                  type: string
+          top_release_groups:
+            $ref: './releaseGroups.yaml'
+          total_artists_count:
+            type: integer
+          total_listen_count:
+            type: integer
+          total_listening_time:
+            type: integer
+          total_new_artists_discovered:
+            type: integer
+          total_recordings_count:
+            type: integer
+          total_release_groups_count:
+            type: integer
+        type: object
+      user_name:
+        type: string
+    type: object

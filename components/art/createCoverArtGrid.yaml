@@ -1,0 +1,39 @@
+required:
+  - 'background'
+  - 'image_size'
+  - 'dimension'
+  - 'skip-missing'
+  - 'show-caa'
+  - 'tiles'
+  - 'release_mbids'
+properties:
+  background:
+    type: string
+    description: The background for the cover art.
+    enum:
+      - transparent
+      - white
+      - black
+  image_size:
+    type: integer
+    description: The size of the cover art image.
+  dimension:
+    type: integer
+    description: The dimension to use for this grid. A grid of dimension 3 has 3 images across and 3 images down, for a total of 9 images.
+  skip-missing:
+    type: 'boolean'
+    description: If cover art is missing for a given release_mbid, skip it and move on to the next one, if true is passed. If false, the show-caa option will decide what happens.
+  show-caa:
+    type: 'boolean'
+    description: If cover art is missing and skip-missing is false, then show-caa will determine if a blank square is shown or if the Cover Art Archive missing image is shown.
+  tiles:
+    type: array
+    description: The tiles paramater is a list of strings that determines the location where cover art images should be placed. Each string is a comma separated list of image cells. A grid of dimension 3 has 9 cells, from 0 in the upper left hand corner, 2 in the upper right hand corner, 6 in the lower left corner and 8 in the lower right corner. Specifying only a single cell will have the image cover that cell exactly. If more than one cell is specified, the image will cover the area defined by the bounding box of all the given cells. These tiles only define bounding box areas - no clipping of images that may fall outside of these tiles will be performed.
+    items:
+      type: string
+  release_mbids:
+    type: array
+    description: An ordered list of release_mbids. The images will be loaded and processed in the order that this list is in. The cover art for the release_mbids will be placed on the tiles defined by the tiles parameter.
+    items:
+      type: string
+      format: uuid

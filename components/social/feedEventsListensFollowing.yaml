@@ -1,0 +1,27 @@
+properties:
+  payload:
+    properties:
+      count:
+        type: integer
+      events:
+        type: array
+        items:
+          type: object
+          properties:
+            created:
+              type: integer
+            event_type:
+              type: string
+            hidden:
+              type: 'boolean'
+            id:
+              type: integer
+            message:
+              type: string
+            metadata:
+              $ref: './metadata.yaml'
+            user_name:
+              type: string
+      user_id:
+        type: string
+    type: object

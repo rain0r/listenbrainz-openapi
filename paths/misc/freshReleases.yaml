@@ -1,0 +1,54 @@
+get:
+  operationId: freshReleases
+  tags:
+    - lbMisc
+  summary: |-
+    This endpoint fetches upcoming and recently released (fresh) releases.
+  parameters:
+    - name: release_date
+      description: Fresh releases will be shown around this pivot date. Must be in YYYY-MM-DD format.
+      in: 'query'
+      required: false
+      schema:
+        type: string
+    - name: days
+      description: The number of days of fresh releases to show. Max 90 days.
+      in: 'query'
+      required: false
+      schema:
+        type: integer
+        max: 90
+    - name: sort
+      description: The sort order of the results.
+      in: 'query'
+      required: false
+      schema:
+        type: string
+        enum:
+          - release_date
+          - artist_credit_name
+          - release_name
+        default: release_name
+    - name: past
+      description: Whether to show releases in the past.
+      in: 'query'
+      required: false
+      schema:
+        type: boolean
+        default: true
+    - name: future
+      description: Whether to show releases in the future.
+      in: 'query'
+      required: false
+      schema:
+        type: boolean
+        default: true
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/recommendations/freshReleases.yaml'
+    '400':
+      description: Invalid date or number of days passed.

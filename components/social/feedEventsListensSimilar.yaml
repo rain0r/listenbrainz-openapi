@@ -1,0 +1,33 @@
+required:
+  - 'payload'
+properties:
+  payload:
+    required:
+      - 'count'
+      - 'events'
+      - 'user_id'
+    properties:
+      count:
+        type: integer
+      events:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+            created:
+              type: integer
+            event_type:
+              type: string
+            hidden:
+              type: 'boolean'
+            metadata:
+              $ref: './metadata.yaml'
+            similarity:
+              type: integer
+            user_name:
+              type: string
+      user_id:
+        type: string
+    type: object

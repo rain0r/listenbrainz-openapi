@@ -1,0 +1,15 @@
+post:
+  operationId: unpin
+  tags:
+    - lbRecordings
+  summary: |-
+    Unpins the currently active pinned recording for the user. A user token (found on https://listenbrainz.org/settings/) must be provided in the Authorization header!
+  responses:
+    '200':
+      description: Recording unpinned.
+    '401':
+      description: Invalid authorization.
+    '404':
+      description: Could not find the active recording to unpin for the user.
+  security:
+    - ApiKeyAuth: []

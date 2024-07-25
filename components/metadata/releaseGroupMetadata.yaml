@@ -1,0 +1,100 @@
+properties:
+  release_group:
+    properties:
+      caa_id:
+        type: integer
+      caa_release_mbid:
+        type: string
+        format: uuid
+      date:
+        type: string
+      name:
+        type: string
+      rels:
+        type: array
+        items:
+          type: object
+          additionalProperties:
+            type: string
+      type:
+        type: string
+    type: object
+  tag:
+    properties:
+      artist:
+        type: array
+        items:
+          type: object
+          properties:
+            artist_mbid:
+              type: string
+              format: uuid
+            count:
+              type: integer
+            genre_mbid:
+              type: string
+              format: uuid
+            tag:
+              type: string
+      release_group:
+        type: array
+        items:
+          type: object
+          properties:
+            count:
+              type: integer
+            genre_mbid:
+              type: string
+              format: uuid
+            tag:
+              type: string
+  artist:
+    properties:
+      artist_credit_id:
+        type: integer
+      artists:
+        type: array
+        items:
+          type: object
+          properties:
+            area:
+              type: string
+            artist_mbid:
+              type: string
+              format: uuid
+            begin_year:
+              type: integer
+            end_year:
+              type: integer
+            join_phrase:
+              type: string
+            name:
+              type: string
+            rels:
+              $ref: '../popularity/rels.yaml'
+            type:
+              type: string
+      name:
+        type: string
+    type: object
+  release:
+    properties:
+      caa_id:
+        type: integer
+      caa_release_mbid:
+        type: string
+        format: uuid
+      date:
+        type: string
+      name:
+        type: string
+      rels:
+        type: array
+        items:
+          type: object
+          additionalProperties:
+            type: string
+      type:
+        type: string
+    type: object
+type: object

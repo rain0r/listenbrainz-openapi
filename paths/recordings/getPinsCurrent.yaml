@@ -1,0 +1,44 @@
+get:
+  operationId: getPinsCurrent
+  tags:
+    - lbRecordings
+  summary: |-
+    Get the currently pinned recording by a user with given user_name.
+  parameters:
+    - name: user_name
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            properties:
+              pinned_recording:
+                properties:
+                  blurb_content:
+                    type: string
+                  created:
+                    type: integer
+                  pinned_until:
+                    type: integer
+                  recording_mbid:
+                    type: string
+                    format: uuid
+                  recording_msid:
+                    type: string
+                    format: uuid
+                  row_id:
+                    type: integer
+                  track_metadata:
+                    $ref: '../../components/common/trackMetadata.yaml'
+                type: object
+              user_name:
+                type: string
+    '400':
+      description: Invalid query parameters, see error message for details.
+    '404':
+      description: The requested user was not found.

@@ -1,0 +1,48 @@
+get:
+  operationId: feedEvents
+  tags:
+    - lbSocial
+  summary: |-
+    CreatGet feed events for a user's timeline.
+  parameters:
+    - name: user_name
+      in: path
+      required: true
+      schema:
+        type: string
+        description: The MusicBrainz ID of the user whose timeline is being requested.
+    - name: max_ts
+      description: If you specify a 'max_ts' timestamp, events with timestamps less than the value will be returned.
+      in: query
+      schema:
+        type: integer
+    - name: min_ts
+      description: If you specify a 'min_ts' timestamp, events with timestamps greater than the value will be returned.
+      in: query
+      schema:
+        type: integer
+    - name: count
+      in: query
+      required: false
+      schema:
+        type: integer
+        description: Optional, number of listens to return.
+        default: 25 # DEFAULT_ITEMS_PER_GET
+        max: 1000 # MAX_ITEMS_PER_GET
+  responses:
+    '200':
+      description: Successful query, you have feed events!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/social/feedEvents.yaml'
+    '400':
+      description: Bad request.
+    '401':
+      description: Unauthorized, you do not have permission to view this user's feed.
+    '403':
+      description: Forbidden, you do not have permission to view this user's feed.
+    '404':
+      description: User not found.
+  security:
+    - ApiKeyAuth: []

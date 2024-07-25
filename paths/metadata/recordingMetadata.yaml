@@ -1,0 +1,35 @@
+get:
+  operationId: recordingMetadata
+  tags:
+    - lbMetadata
+  summary: |-
+    This endpoint takes in a list of recording_mbids and returns an array of dicts that contain recording metadata suitable for showing in a context that requires as much detail about a recording and the artist. Using the inc parameter, you can control which portions of metadata to fetch.
+  parameters:
+    - name: recording_mbids
+      description: A comma separated list of recording_mbids.
+      in: query
+      required: true
+      schema:
+        type: array
+        items:
+          type: string
+          format: uuid
+    - name: inc
+      description: A space separated list of “artist”, “tag” and/or “release” to indicate which portions of metadata you're interested in fetching. We encourage users to only fetch the data they plan to consume.
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              $ref: '../../components/metadata/recordingMetadata.yaml'
+    '400':
+      description: Invalid query parameters, see error message for details.
+    '404':
+      description: The requested user was not found.

@@ -1,0 +1,38 @@
+post:
+  operationId: feedEventsUnhide
+  tags:
+    - lbSocial
+  summary: |-
+    Delete hidden events from the user feed, aka unhide events.
+  parameters:
+    - name: user_name
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            event_type:
+              type: string
+            id:
+              type: integer
+          type: object
+    required: true
+  responses:
+    '200':
+      description: Event unhidden successfully.
+    '400':
+      description: Bad request.
+    '401':
+      description: Unauthorized.
+    '403':
+      description: Forbidden.
+    '404':
+      description: User not found.
+    '500':
+      description: API Internal Server Error.
+  security:
+    - ApiKeyAuth: []

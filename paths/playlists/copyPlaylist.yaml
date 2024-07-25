@@ -1,0 +1,25 @@
+post:
+  operationId: copyPlaylist
+  tags:
+    - lbPlaylists
+  summary: |-
+    Copy a playlist - the new playlist will be given the name “Copy of <playlist_name>”. POST body data does not need to contain anything.
+  parameters:
+    - name: playlist_mbid
+      description: The playlist mbid to append to.
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    '200':
+      description: Playlist copied.
+    '401':
+      description: Invalid authorization. See error message for details.
+    '403':
+      description: Forbidden. The requesting user was not allowed to carry out this operation.
+    '404':
+      description: Playlist not found.
+  security:
+    - ApiKeyAuth: []

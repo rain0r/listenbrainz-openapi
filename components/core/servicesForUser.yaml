@@ -1,0 +1,10 @@
+required:
+  - 'services'
+  - 'user_name'
+properties:
+  services:
+    type: array
+    items:
+      type: string
+  user_name:
+    type: string

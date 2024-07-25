@@ -1,0 +1,97 @@
+required:
+  - 'payload'
+properties:
+  payload:
+    required:
+      - 'daily_activity'
+      - 'from_ts'
+      - 'last_updated'
+      - 'range'
+      - 'to_ts'
+      - 'user_id'
+    properties:
+      daily_activity:
+        required:
+          - 'Friday'
+          - 'Monday'
+          - 'Saturday'
+          - 'Sunday'
+          - 'Thursday'
+          - 'Tuesday'
+          - 'Wednesday'
+        properties:
+          Friday:
+            type: array
+            items:
+              type: object
+              properties:
+                hour:
+                  type: integer
+                listen_count:
+                  type: integer
+          Monday:
+            type: array
+            items:
+              type: object
+              properties:
+                hour:
+                  type: integer
+                listen_count:
+                  type: integer
+          Saturday:
+            type: array
+            items:
+              type: object
+              properties:
+                hour:
+                  type: integer
+                listen_count:
+                  type: integer
+          Sunday:
+            type: array
+            items:
+              type: object
+              properties:
+                hour:
+                  type: integer
+                listen_count:
+                  type: integer
+          Thursday:
+            type: array
+            items:
+              type: object
+              properties:
+                hour:
+                  type: integer
+                listen_count:
+                  type: integer
+          Tuesday:
+            type: array
+            items:
+              type: object
+              properties:
+                hour:
+                  type: integer
+                listen_count:
+                  type: integer
+          Wednesday:
+            type: array
+            items:
+              type: object
+              properties:
+                hour:
+                  type: integer
+                listen_count:
+                  type: integer
+        type: object
+      from_ts:
+        type: integer
+      last_updated:
+        type: integer
+      range:
+        type: string
+      to_ts:
+        type: integer
+      user_id:
+        type: string
+    type: object

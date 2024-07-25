@@ -1,0 +1,42 @@
+required:
+  - 'payload'
+properties:
+  payload:
+    required:
+      - 'releases'
+      - 'total_count'
+    properties:
+      releases:
+        type: array
+        items:
+          type: object
+          properties:
+            artist_credit_name:
+              type: string
+            artist_mbids:
+              type: array
+              items:
+                type: string
+            listen_count:
+              type: integer
+            release_date:
+              type: string
+            release_group_mbid:
+              type: string
+              format: uuid
+            release_group_primary_type:
+              type: string
+            release_mbid:
+              type: string
+              format: uuid
+            release_name:
+              type: string
+            release_tags:
+              type: array
+              items:
+                additionalProperties:
+                  type: string
+                type: object
+      total_count:
+        type: integer
+    type: object

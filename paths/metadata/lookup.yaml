@@ -1,0 +1,46 @@
+get:
+  operationId: lookup
+  tags:
+    - lbMetadata
+  summary: |-
+    This endpoint looks up mbid metadata for the given artist, recording and optionally a release name. The total number of characters in the artist name, recording name and release name query arguments should be less than or equal to MAX_MAPPING_QUERY_LENGTH.
+  parameters:
+    - name: artist_name
+      description: Artist name of the listen.
+      in: query
+      required: true
+      schema:
+        type: string
+    - name: recording_name
+      description: Track name of the listen.
+      in: query
+      required: true
+      schema:
+        type: string
+    - name: release_name
+      description: Release name of the listen.
+      in: query
+      required: false
+      schema:
+        type: string
+    - name: metadata
+      description: Should extra metadata be also returned if a match is found, see /metadata/recording for details.
+      in: query
+      required: true
+      schema:
+        type: boolean
+    - name: inc
+      description: A space separated list of “artist”, “tag” and/or “release” to indicate which portions of metadata you're interested in fetching. We encourage users to only fetch the data they plan to consume.
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/metadata/lookup.yaml'
+    '400':
+      description: Invalid arguments.

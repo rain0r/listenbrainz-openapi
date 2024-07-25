@@ -1,0 +1,44 @@
+required:
+  - 'payload'
+properties:
+  payload:
+    required:
+      - 'count'
+      - 'entity'
+      - 'last_updated'
+      - 'mbids'
+      - 'model_id'
+      - 'model_url'
+      - 'offset'
+      - 'total_mbid_count'
+      - 'user_name'
+    properties:
+      count:
+        type: integer
+      entity:
+        type: string
+      last_updated:
+        type: integer
+      mbids:
+        type: array
+        items:
+          type: object
+          properties:
+            latest_listened_at:
+              type: string
+            recording_mbid:
+              type: string
+              format: uuid
+            score:
+              type: integer
+      model_id:
+        type: string
+      model_url:
+        type: string
+      offset:
+        type: integer
+      total_mbid_count:
+        type: integer
+      user_name:
+        type: string
+    type: object

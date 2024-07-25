@@ -1,0 +1,40 @@
+post:
+  operationId: recommendPersonalRecording
+  tags:
+    - lbSocial
+  summary: |-
+    Make the user recommend a recording to their followers. The request should post the following data about the recording being recommended (either one of recording_msid or recording_mbid is sufficient), and also the list of followers getting recommended.
+  parameters:
+    - name: user_name
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            metadata:
+              properties:
+                recording_msid:
+                  type: string
+                  format: uuid
+                recording_mbid:
+                  type: string
+                  format: uuid
+                users:
+                  type: string
+                blurb_content:
+                  type: string
+              type: object
+    required: true
+  responses:
+    '200':
+      description: Successful query, recording has been recommended!
+    '400':
+      description: Bad request.
+    '401':
+      description: Unauthorized, you do not have permissions to recommend.
+  security:
+    - ApiKeyAuth: []

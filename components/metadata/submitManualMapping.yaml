@@ -1,0 +1,10 @@
+required:
+  - 'a'
+  - 'b'
+properties:
+  recording_mbid:
+    type: string
+    format: uuid
+  recording_msid:
+    type: string
+    format: uuid

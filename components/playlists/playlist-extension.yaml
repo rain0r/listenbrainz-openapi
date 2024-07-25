@@ -1,0 +1,29 @@
+properties:
+  'https://musicbrainz.org/doc/jspf#playlist':
+    title: playlistExtensionPayload
+    properties:
+      created_for:
+        type: string
+      creator:
+        type: string
+      collaborators:
+        type: array
+        items:
+          type: string
+      copied_from:
+        type: string
+      copied_from_deleted:
+        type: 'boolean'
+      public:
+        type: 'boolean'
+      last_modified_at:
+        type: string
+      additional_metadata:
+        type: object
+        properties:
+          algorithm_metadata:
+            properties:
+              source_patch:
+                type: string
+        additionalProperties:
+          type: string

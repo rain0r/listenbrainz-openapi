@@ -1,0 +1,40 @@
+get:
+  operationId: getFeedbackForRecordings
+  tags:
+    - lbRecordings
+  summary: Get feedback given by user user_name for the list of recordings supplied.
+  parameters:
+    - name: user_name
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: recording_msids
+      description: Comma separated list of recording_msids for which feedback records are to be fetched.
+      in: query
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          format: uuid
+    - name: recording_mbids
+      description: Comma separated list of recording_mbids for which feedback records are to be fetched.
+      in: query
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          format: uuid
+  responses:
+    '200':
+      description: Yay, you have data!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/recordings/feedbackResponse.yaml'
+            feedback:
+              type: array
+              items:
+                $ref: '../../components/recordings/feedback.yaml'

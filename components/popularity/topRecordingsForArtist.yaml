@@ -6,6 +6,7 @@ items:
       type: array
       items:
         type: string
+        format: uuid
     artist_name:
       type: string
     artists:

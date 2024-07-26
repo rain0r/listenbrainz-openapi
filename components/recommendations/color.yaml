@@ -42,6 +42,7 @@ properties:
                             type: array
                             items:
                               type: string
+                              format: uuid
                           recording_mbid:
                             type: string
                             format: uuid

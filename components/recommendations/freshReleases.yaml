@@ -17,6 +17,7 @@ properties:
               type: array
               items:
                 type: string
+                format: uuid
             listen_count:
               type: integer
             release_date:

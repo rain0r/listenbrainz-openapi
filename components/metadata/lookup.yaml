@@ -5,6 +5,7 @@ properties:
     type: array
     items:
       type: string
+      format: uuid
   metadata:
     properties:
       artist:

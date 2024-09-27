@@ -81,3 +81,11 @@ properties:
     type: string
   date:
     type: string
+  genre:
+    type: string
+  artist_names:
+    type: array
+    items:
+      type: string    
+  trackNumber:
+    type: string

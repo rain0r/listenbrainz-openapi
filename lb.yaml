@@ -206,7 +206,7 @@ paths:
   # Recommendations
   '/1/cf/recommendation/user/{user_name}/recording':
     $ref: 'paths/recommendations/recordingRecommendations.yaml'
-  '/1/recommendations/feedback/submit':
+  '/1/recommendation/feedback/submit':
     $ref: 'paths/recommendations/submitFeedback.yaml'
   '/1/recommendations/feedback/delete':
     $ref: 'paths/recommendations/deleteFeedback.yaml'

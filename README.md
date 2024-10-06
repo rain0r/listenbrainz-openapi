@@ -2,6 +2,12 @@
 
 This project aims to provide an OpenAPI 3 specification for the [ListenBrainz API](https://listenbrainz.readthedocs.io/en/latest/users/api/index.html#reference).
 
+---
+
+[Link to Swagger UI](https://rain0r.github.io/listenbrainz-openapi/index.html#/)
+
+---
+
 ## Structure
 
 The specification is split up in multiple folders and files. Here is an overview of the folders:

@@ -13,5 +13,5 @@ jobs:
         uses: Legion2/swagger-ui-action@v1
         with:
           output: swagger-ui
-          spec-file: lb.yaml
+          spec-url: https://raw.githubusercontent.com/rain0r/listenbrainz-openapi/refs/heads/master/lb.yaml
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -15,3 +15,8 @@ jobs:
           output: swagger-ui
           spec-url: https://raw.githubusercontent.com/rain0r/listenbrainz-openapi/refs/heads/master/lb.yaml
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: swagger-ui

@@ -14,3 +14,4 @@ jobs:
         with:
           output: swagger-ui
           spec-file: lb.yaml
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

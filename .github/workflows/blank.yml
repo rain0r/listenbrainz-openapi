@@ -19,6 +19,7 @@ jobs:
         uses: openapi-generators/openapitools-generator-action@v1
         with:
           generator: openapi-yaml
+          openapi-file: lb.yaml
       - name: Generate Swagger UI from a single YAML-file
         uses: Legion2/swagger-ui-action@v1
         with:

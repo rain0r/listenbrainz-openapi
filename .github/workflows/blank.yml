@@ -12,18 +12,18 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Swagger Codegen
-        uses: bjerkio/swagger-codegen-action@v1
+    steps:    
+      - name: Checkout 
+        uses: actions/checkout@v2
+      - name: Generate a single YAML-file
+        uses: openapi-generators/openapitools-generator-action@v1
         with:
-          args: generate
-                -l openapi-yaml -i lb.yaml -o single-file
-      - name: Generate Swagger UI
+          generator: openapi-yaml
+      - name: Generate Swagger UI from a single YAML-file
         uses: Legion2/swagger-ui-action@v1
         with:
           output: swagger-ui
-          spec-file: single-file/openapi.yaml
-          # spec-url: https://raw.githubusercontent.com/rain0r/listenbrainz-openapi/refs/heads/master/lb.yaml
+          spec-file: openapi-yaml-client/openapi.yaml          
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

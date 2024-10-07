@@ -16,8 +16,7 @@ jobs:
       - name: Swagger Codegen
         uses: bjerkio/swagger-codegen-action@v1
         with:
-          args: |
-            generate -l openapi-yaml -i lb.yaml -o single-file
+          args: generate -l openapi-yaml -i lb.yaml -o single-file
       - name: Generate Swagger UI
         uses: Legion2/swagger-ui-action@v1
         with:

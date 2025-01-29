@@ -1,4 +1,6 @@
 type: object
+additionalProperties:
+  type: string
 properties:
   media_player:
     type: string

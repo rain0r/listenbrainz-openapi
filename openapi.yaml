@@ -6320,6 +6320,8 @@ components:
           type: string
       type: object
     additionalInfo:
+      additionalProperties:
+        type: string
       example:
         date: date
         artist_names:

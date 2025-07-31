@@ -88,6 +88,6 @@ properties:
   artist_names:
     type: array
     items:
-      type: string    
+      type: string
   trackNumber:
     type: string

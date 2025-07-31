@@ -51,3 +51,15 @@ items:
       type: integer
     total_user_count:
       type: integer
+    tags:
+      type: array
+      items:
+        type: object
+        properties:
+          count:
+            type: integer
+          genre_mbid:
+            type: string
+            format: uuid
+          tag:
+            type: string

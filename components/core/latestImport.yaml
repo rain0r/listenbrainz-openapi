@@ -8,3 +8,12 @@ properties:
   latest_import:
     type: string
     description: 'the timestamp of the newest listen submitted in previous imports. Defaults to 0'
+  status:
+    type: object
+    properties:
+      state:
+        type: string
+        description: 'a short string denoting the state of the import'
+      count:
+        type: integer
+        description: 'the number of listens that have been imported for the user by the importer'

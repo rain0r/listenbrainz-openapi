@@ -10,6 +10,7 @@ properties:
       - 'range'
       - 'releases'
       - 'to_ts'
+      - 'total_release_count'
     properties:
       count:
         type: integer
@@ -49,5 +50,7 @@ properties:
             release_name:
               type: string
       to_ts:
+        type: integer
+      total_release_count:
         type: integer
     type: object

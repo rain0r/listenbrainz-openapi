@@ -21,7 +21,7 @@ properties:
             metadata:
               $ref: './metadata.yaml'
             user_name:
-              type: string              
+              type: string
             similarity:
               type: number
       user_id:

@@ -10,6 +10,7 @@ properties:
       - 'offset'
       - 'range'
       - 'to_ts'
+      - 'total_artist_count'
     properties:
       artists:
         type: array
@@ -34,5 +35,7 @@ properties:
       range:
         type: string
       to_ts:
+        type: integer
+      total_artist_count:
         type: integer
     type: object

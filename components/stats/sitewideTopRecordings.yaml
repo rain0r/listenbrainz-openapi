@@ -10,6 +10,7 @@ properties:
       - 'range'
       - 'recordings'
       - 'to_ts'
+      - 'total_recording_count'
     properties:
       count:
         type: integer
@@ -55,5 +56,7 @@ properties:
             track_name:
               type: string
       to_ts:
+        type: integer
+      total_recording_count:
         type: integer
     type: object

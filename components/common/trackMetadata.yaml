@@ -3,6 +3,15 @@ properties:
     $ref: './additionalInfo.yaml'
   artist_name:
     type: string
+  brainzplayer_metadata:
+    type: object
+    properties:
+      artist_name:
+        type: string
+      release_name:
+        type: string
+      track_name:
+        type: string
   mbid_mapping:
     $ref: './mbidMapping.yaml'
   release_name:

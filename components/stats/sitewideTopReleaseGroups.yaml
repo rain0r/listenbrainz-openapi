@@ -10,6 +10,7 @@ properties:
       - 'range'
       - 'release_groups'
       - 'to_ts'
+      - 'total_release_group_count'
     properties:
       count:
         type: integer
@@ -24,5 +25,7 @@ properties:
       release_groups:
         $ref: './releaseGroups.yaml'
       to_ts:
+        type: integer
+      total_release_group_count:
         type: integer
     type: object

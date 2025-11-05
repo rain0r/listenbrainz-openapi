@@ -28,6 +28,13 @@ properties:
     type: object
   recording:
     properties:
+      first_release_date:
+        type: string
+        format: date
+      isrcs:
+        type: array
+      items:
+        type: string
       length:
         type: integer
       name:

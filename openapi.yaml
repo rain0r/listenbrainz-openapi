@@ -6,7 +6,7 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   termsOfService: https://listenbrainz.org/terms-of-service/
   title: ListenBrainz Swagger - OpenAPI 3.0
-  version: v-2024-07-17.0
+  version: v-2025-11-04.0
 servers:
 - url: https://api.listenbrainz.org
 tags:
@@ -5372,8 +5372,13 @@ components:
             name: name
             album_artist_name: album_artist_name
           recording:
+            isrcs:
+            - isrcs
+            - isrcs
+            first_release_date: 2000-01-23
             length: 1
             name: name
+            items: items
             rels:
             - artist_name: artist_name
               instrument: instrument
@@ -10806,7 +10811,34 @@ components:
           type: string
       type: object
     recordingMetadata_recording:
+      example:
+        isrcs:
+        - isrcs
+        - isrcs
+        first_release_date: 2000-01-23
+        length: 1
+        name: name
+        items: items
+        rels:
+        - artist_name: artist_name
+          instrument: instrument
+          type: type
+          artist_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - artist_name: artist_name
+          instrument: instrument
+          type: type
+          artist_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
+        first_release_date:
+          format: date
+          type: string
+        isrcs:
+          items:
+            description: TODO default missing array inner type to string
+            type: string
+          type: array
+        items:
+          type: string
         length:
           type: integer
         name:
@@ -10881,46 +10913,6 @@ components:
           type: array
         name:
           type: string
-      type: object
-    lookup_metadata_recording_rels_inner:
-      example:
-        artist_name: artist_name
-        instrument: instrument
-        type: type
-        artist_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        artist_mbid:
-          format: uuid
-          type: string
-        artist_name:
-          type: string
-        instrument:
-          type: string
-        type:
-          type: string
-      type: object
-    lookup_metadata_recording:
-      example:
-        length: 1
-        name: name
-        rels:
-        - artist_name: artist_name
-          instrument: instrument
-          type: type
-          artist_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - artist_name: artist_name
-          instrument: instrument
-          type: type
-          artist_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        length:
-          type: integer
-        name:
-          type: string
-        rels:
-          items:
-            $ref: "#/components/schemas/lookup_metadata_recording_rels_inner"
-          type: array
       type: object
     lookup_metadata_release:
       example:
@@ -11051,8 +11043,13 @@ components:
           name: name
           album_artist_name: album_artist_name
         recording:
+          isrcs:
+          - isrcs
+          - isrcs
+          first_release_date: 2000-01-23
           length: 1
           name: name
+          items: items
           rels:
           - artist_name: artist_name
             instrument: instrument
@@ -11088,7 +11085,7 @@ components:
         artist:
           $ref: "#/components/schemas/recordingMetadata_artist"
         recording:
-          $ref: "#/components/schemas/lookup_metadata_recording"
+          $ref: "#/components/schemas/recordingMetadata_recording"
         release:
           $ref: "#/components/schemas/lookup_metadata_release"
         tag:

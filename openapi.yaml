@@ -3358,7 +3358,9 @@ components:
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 url_rels:
-                  type: type
+                - type: type
+                  url: url
+                - type: type
                   url: url
               release_name: release_name
               track_name: track_name
@@ -3438,7 +3440,9 @@ components:
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 url_rels:
-                  type: type
+                - type: type
+                  url: url
+                - type: type
                   url: url
               release_name: release_name
               track_name: track_name
@@ -3539,7 +3543,9 @@ components:
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 url_rels:
-                  type: type
+                - type: type
+                  url: url
+                - type: type
                   url: url
               release_name: release_name
               track_name: track_name
@@ -3616,7 +3622,9 @@ components:
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 url_rels:
-                  type: type
+                - type: type
+                  url: url
+                - type: type
                   url: url
               release_name: release_name
               track_name: track_name
@@ -4940,7 +4948,9 @@ components:
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
-                type: type
+              - type: type
+                url: url
+              - type: type
                 url: url
             release_name: release_name
             track_name: track_name
@@ -5021,7 +5031,9 @@ components:
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
-                type: type
+              - type: type
+                url: url
+              - type: type
                 url: url
             release_name: release_name
             track_name: track_name
@@ -5113,7 +5125,9 @@ components:
           recording_name: recording_name
           release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           url_rels:
-            type: type
+          - type: type
+            url: url
+          - type: type
             url: url
         release_name: release_name
         track_name: track_name
@@ -5214,7 +5228,9 @@ components:
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
-                type: type
+              - type: type
+                url: url
+              - type: type
                 url: url
             release_name: release_name
             track_name: track_name
@@ -5296,7 +5312,9 @@ components:
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
-                type: type
+              - type: type
+                url: url
+              - type: type
                 url: url
             release_name: release_name
             track_name: track_name
@@ -5646,7 +5664,9 @@ components:
                   recording_name: recording_name
                   release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                   url_rels:
-                    type: type
+                  - type: type
+                    url: url
+                  - type: type
                     url: url
                 release_name: release_name
                 track_name: track_name
@@ -5739,7 +5759,9 @@ components:
                   recording_name: recording_name
                   release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                   url_rels:
-                    type: type
+                  - type: type
+                    url: url
+                  - type: type
                     url: url
                 release_name: release_name
                 track_name: track_name
@@ -5841,7 +5863,9 @@ components:
                   recording_name: recording_name
                   release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                   url_rels:
-                    type: type
+                  - type: type
+                    url: url
+                  - type: type
                     url: url
                 release_name: release_name
                 track_name: track_name
@@ -5933,7 +5957,9 @@ components:
                   recording_name: recording_name
                   release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                   url_rels:
-                    type: type
+                  - type: type
+                    url: url
+                  - type: type
                     url: url
                 release_name: release_name
                 track_name: track_name
@@ -6421,7 +6447,9 @@ components:
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             url_rels:
-              type: type
+            - type: type
+              url: url
+            - type: type
               url: url
           release_name: release_name
           track_name: track_name
@@ -6603,7 +6631,9 @@ components:
         recording_name: recording_name
         release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         url_rels:
-          type: type
+        - type: type
+          url: url
+        - type: type
           url: url
       properties:
         artist_mbids:
@@ -6629,7 +6659,9 @@ components:
           format: uuid
           type: string
         url_rels:
-          $ref: "#/components/schemas/mbidMapping_url_rels"
+          items:
+            $ref: "#/components/schemas/mbidMapping_url_rels_inner"
+          type: array
       type: object
     musicBrainzArtist:
       example:
@@ -6820,7 +6852,9 @@ components:
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             url_rels:
-              type: type
+            - type: type
+              url: url
+            - type: type
               url: url
           release_name: release_name
           track_name: track_name
@@ -7063,7 +7097,9 @@ components:
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             url_rels:
-              type: type
+            - type: type
+              url: url
+            - type: type
               url: url
           release_name: release_name
           track_name: track_name
@@ -7166,7 +7202,9 @@ components:
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
-                type: type
+              - type: type
+                url: url
+              - type: type
                 url: url
             release_name: release_name
             track_name: track_name
@@ -7254,7 +7292,9 @@ components:
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             url_rels:
-              type: type
+            - type: type
+              url: url
+            - type: type
               url: url
           release_name: release_name
           track_name: track_name
@@ -7357,7 +7397,9 @@ components:
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
-                type: type
+              - type: type
+                url: url
+              - type: type
                 url: url
             release_name: release_name
             track_name: track_name
@@ -7649,7 +7691,9 @@ components:
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             url_rels:
-              type: type
+            - type: type
+              url: url
+            - type: type
               url: url
           release_name: release_name
           track_name: track_name
@@ -7746,7 +7790,9 @@ components:
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
-                type: type
+              - type: type
+                url: url
+              - type: type
                 url: url
             release_name: release_name
             track_name: track_name
@@ -7826,7 +7872,9 @@ components:
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
-                type: type
+              - type: type
+                url: url
+              - type: type
                 url: url
             release_name: release_name
             track_name: track_name
@@ -7931,7 +7979,9 @@ components:
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             url_rels:
-              type: type
+            - type: type
+              url: url
+            - type: type
               url: url
           release_name: release_name
           track_name: track_name
@@ -8018,7 +8068,9 @@ components:
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
-                type: type
+              - type: type
+                url: url
+              - type: type
                 url: url
             release_name: release_name
             track_name: track_name
@@ -8095,7 +8147,9 @@ components:
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
-                type: type
+              - type: type
+                url: url
+              - type: type
                 url: url
             release_name: release_name
             track_name: track_name
@@ -10401,7 +10455,9 @@ components:
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             url_rels:
-              type: type
+            - type: type
+              url: url
+            - type: type
               url: url
           release_name: release_name
           track_name: track_name
@@ -11322,7 +11378,9 @@ components:
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
-                type: type
+              - type: type
+                url: url
+              - type: type
                 url: url
             release_name: release_name
             track_name: track_name
@@ -11437,7 +11495,9 @@ components:
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 url_rels:
-                  type: type
+                - type: type
+                  url: url
+                - type: type
                   url: url
               release_name: release_name
               track_name: track_name
@@ -11530,7 +11590,9 @@ components:
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 url_rels:
-                  type: type
+                - type: type
+                  url: url
+                - type: type
                   url: url
               release_name: release_name
               track_name: track_name
@@ -11635,7 +11697,9 @@ components:
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
-                type: type
+              - type: type
+                url: url
+              - type: type
                 url: url
             release_name: release_name
             track_name: track_name
@@ -11747,7 +11811,9 @@ components:
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 url_rels:
-                  type: type
+                - type: type
+                  url: url
+                - type: type
                   url: url
               release_name: release_name
               track_name: track_name
@@ -11839,7 +11905,9 @@ components:
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 url_rels:
-                  type: type
+                - type: type
+                  url: url
+                - type: type
                   url: url
               release_name: release_name
               track_name: track_name
@@ -12419,7 +12487,7 @@ components:
           $ref: "#/components/schemas/playlistExtensionPayload_additional_metadata"
       title: playlistExtensionPayload
       type: object
-    mbidMapping_url_rels:
+    mbidMapping_url_rels_inner:
       example:
         type: type
         url: url

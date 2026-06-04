@@ -24,3 +24,5 @@ get:
         application/json:
           schema:
             $ref: '../../components/recommendations/lbRadio.yaml'
+  security:
+    - ApiKeyAuth: []

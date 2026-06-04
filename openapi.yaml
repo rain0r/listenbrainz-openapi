@@ -3357,6 +3357,9 @@ components:
                 recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                url_rels:
+                  type: type
+                  url: url
               release_name: release_name
               track_name: track_name
             user_name: user_name
@@ -3434,6 +3437,9 @@ components:
                 recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                url_rels:
+                  type: type
+                  url: url
               release_name: release_name
               track_name: track_name
             user_name: user_name
@@ -3532,6 +3538,9 @@ components:
                 recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                url_rels:
+                  type: type
+                  url: url
               release_name: release_name
               track_name: track_name
           - playing_now: true
@@ -3606,6 +3615,9 @@ components:
                 recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                url_rels:
+                  type: type
+                  url: url
               release_name: release_name
               track_name: track_name
           playing_now: true
@@ -4927,6 +4939,9 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url_rels:
+                type: type
+                url: url
             release_name: release_name
             track_name: track_name
           user_id: user_id
@@ -5005,6 +5020,9 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url_rels:
+                type: type
+                url: url
             release_name: release_name
             track_name: track_name
           user_id: user_id
@@ -5094,6 +5112,9 @@ components:
           recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           recording_name: recording_name
           release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          url_rels:
+            type: type
+            url: url
         release_name: release_name
         track_name: track_name
       properties:
@@ -5192,6 +5213,9 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url_rels:
+                type: type
+                url: url
             release_name: release_name
             track_name: track_name
         - blurb_content: blurb_content
@@ -5271,6 +5295,9 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url_rels:
+                type: type
+                url: url
             release_name: release_name
             track_name: track_name
         total_count: 2
@@ -5618,6 +5645,9 @@ components:
                   recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                   recording_name: recording_name
                   release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                  url_rels:
+                    type: type
+                    url: url
                 release_name: release_name
                 track_name: track_name
               user_name: user_name
@@ -5708,6 +5738,9 @@ components:
                   recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                   recording_name: recording_name
                   release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                  url_rels:
+                    type: type
+                    url: url
                 release_name: release_name
                 track_name: track_name
               user_name: user_name
@@ -5807,6 +5840,9 @@ components:
                   recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                   recording_name: recording_name
                   release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                  url_rels:
+                    type: type
+                    url: url
                 release_name: release_name
                 track_name: track_name
               user_name: user_name
@@ -5896,6 +5932,9 @@ components:
                   recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                   recording_name: recording_name
                   release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                  url_rels:
+                    type: type
+                    url: url
                 release_name: release_name
                 track_name: track_name
               user_name: user_name
@@ -6381,6 +6420,9 @@ components:
             recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url_rels:
+              type: type
+              url: url
           release_name: release_name
           track_name: track_name
         user_id: user_id
@@ -6560,6 +6602,9 @@ components:
         recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         recording_name: recording_name
         release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        url_rels:
+          type: type
+          url: url
       properties:
         artist_mbids:
           items:
@@ -6583,6 +6628,8 @@ components:
         release_mbid:
           format: uuid
           type: string
+        url_rels:
+          $ref: "#/components/schemas/mbidMapping_url_rels"
       type: object
     musicBrainzArtist:
       example:
@@ -6772,6 +6819,9 @@ components:
             recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url_rels:
+              type: type
+              url: url
           release_name: release_name
           track_name: track_name
         user_name: user_name
@@ -7012,6 +7062,9 @@ components:
             recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url_rels:
+              type: type
+              url: url
           release_name: release_name
           track_name: track_name
       properties:
@@ -7112,6 +7165,9 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url_rels:
+                type: type
+                url: url
             release_name: release_name
             track_name: track_name
       properties:
@@ -7197,6 +7253,9 @@ components:
             recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url_rels:
+              type: type
+              url: url
           release_name: release_name
           track_name: track_name
       properties:
@@ -7297,6 +7356,9 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url_rels:
+                type: type
+                url: url
             release_name: release_name
             track_name: track_name
         user_name: user_name
@@ -7586,6 +7648,9 @@ components:
             recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url_rels:
+              type: type
+              url: url
           release_name: release_name
           track_name: track_name
         user_name: user_name
@@ -7680,6 +7745,9 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url_rels:
+                type: type
+                url: url
             release_name: release_name
             track_name: track_name
           user_name: user_name
@@ -7757,6 +7825,9 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url_rels:
+                type: type
+                url: url
             release_name: release_name
             track_name: track_name
           user_name: user_name
@@ -7859,6 +7930,9 @@ components:
             recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url_rels:
+              type: type
+              url: url
           release_name: release_name
           track_name: track_name
       properties:
@@ -7943,6 +8017,9 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url_rels:
+                type: type
+                url: url
             release_name: release_name
             track_name: track_name
         - playing_now: true
@@ -8017,6 +8094,9 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url_rels:
+                type: type
+                url: url
             release_name: release_name
             track_name: track_name
         playing_now: true
@@ -10320,6 +10400,9 @@ components:
             recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url_rels:
+              type: type
+              url: url
           release_name: release_name
           track_name: track_name
       properties:
@@ -11238,6 +11321,9 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url_rels:
+                type: type
+                url: url
             release_name: release_name
             track_name: track_name
           user_name: user_name
@@ -11350,6 +11436,9 @@ components:
                 recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                url_rels:
+                  type: type
+                  url: url
               release_name: release_name
               track_name: track_name
             user_name: user_name
@@ -11440,6 +11529,9 @@ components:
                 recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                url_rels:
+                  type: type
+                  url: url
               release_name: release_name
               track_name: track_name
             user_name: user_name
@@ -11542,6 +11634,9 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url_rels:
+                type: type
+                url: url
             release_name: release_name
             track_name: track_name
           user_name: user_name
@@ -11651,6 +11746,9 @@ components:
                 recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                url_rels:
+                  type: type
+                  url: url
               release_name: release_name
               track_name: track_name
             user_name: user_name
@@ -11740,6 +11838,9 @@ components:
                 recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                url_rels:
+                  type: type
+                  url: url
               release_name: release_name
               track_name: track_name
             user_name: user_name
@@ -12317,6 +12418,16 @@ components:
         additional_metadata:
           $ref: "#/components/schemas/playlistExtensionPayload_additional_metadata"
       title: playlistExtensionPayload
+      type: object
+    mbidMapping_url_rels:
+      example:
+        type: type
+        url: url
+      properties:
+        type:
+          type: string
+        url:
+          type: string
       type: object
   securitySchemes:
     ApiKeyAuth:

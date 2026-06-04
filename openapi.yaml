@@ -3659,6 +3659,9 @@ components:
         status:
           state: state
           count: 0
+        error:
+          retry: true
+          message: message
       properties:
         musicbrainz_id:
           description: the MusicBrainz ID of the user
@@ -3669,6 +3672,8 @@ components:
           type: string
         status:
           $ref: "#/components/schemas/latestImport_status"
+        error:
+          $ref: "#/components/schemas/latestImport_error"
       required:
       - latest_import
       - musicbrainz_id
@@ -8068,6 +8073,17 @@ components:
           description: the number of listens that have been imported for the user
             by the importer
           type: integer
+      type: object
+    latestImport_error:
+      example:
+        retry: true
+        message: message
+      properties:
+        retry:
+          type: boolean
+        message:
+          description: Optional error message from the import service"
+          type: string
       type: object
     lbRadioRecordingsForArtist_value_inner:
       properties:

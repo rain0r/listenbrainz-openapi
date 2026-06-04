@@ -17,3 +17,11 @@ properties:
       count:
         type: integer
         description: 'the number of listens that have been imported for the user by the importer'
+  error:
+    type: object
+    properties:
+      retry:
+        type: boolean        
+      message:
+        type: string
+        description: 'Optional error message from the import service"'  

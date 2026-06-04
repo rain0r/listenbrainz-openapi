@@ -29,4 +29,11 @@ properties:
   release_mbid:
     type: string
     format: uuid
+  url_rels:    
+      type: object
+      properties:
+        type:
+          type: string    
+        url:
+          type: string
 type: object

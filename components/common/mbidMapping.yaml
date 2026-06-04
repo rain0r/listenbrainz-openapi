@@ -29,7 +29,9 @@ properties:
   release_mbid:
     type: string
     format: uuid
-  url_rels:    
+  url_rels:
+    type: array
+    items:  
       type: object
       properties:
         type:

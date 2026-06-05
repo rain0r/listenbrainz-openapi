@@ -2161,6 +2161,8 @@ paths:
           description: "Yay, you have data!"
         "400":
           description: Invalid arguments.
+      security:
+      - ApiKeyAuth: []
       summary: "This endpoint looks up mbid metadata for the given artist, recording\
         \ and optionally a release name. The total number of characters in the artist\
         \ name, recording name and release name query arguments should be less than\

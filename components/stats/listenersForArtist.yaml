@@ -8,7 +8,7 @@ properties:
       - 'from_ts'
       - 'last_updated'
       - 'listeners'
-      - 'stats_range'
+      - 'range'
       - 'to_ts'
       - 'total_listen_count'
       - 'total_user_count'
@@ -31,7 +31,7 @@ properties:
               type: integer
             user_name:
               type: string
-      stats_range:
+      range:
         type: string
       to_ts:
         type: integer

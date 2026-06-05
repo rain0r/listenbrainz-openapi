@@ -21,7 +21,7 @@ properties:
     type: object
     properties:
       retry:
-        type: boolean        
+        type: boolean
       message:
         type: string
-        description: 'Optional error message from the import service"'  
+        description: 'Optional error message from the import service'

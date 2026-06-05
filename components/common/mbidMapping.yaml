@@ -31,11 +31,6 @@ properties:
     format: uuid
   url_rels:
     type: array
-    items:  
-      type: object
-      properties:
-        type:
-          type: string    
-        url:
-          type: string
+    items:
+      $ref: '../common/url_rels.yaml'
 type: object

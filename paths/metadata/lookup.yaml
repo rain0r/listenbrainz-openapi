@@ -44,3 +44,5 @@ get:
             $ref: '../../components/metadata/lookup.yaml'
     '400':
       description: Invalid arguments.
+  security:
+    - ApiKeyAuth: []

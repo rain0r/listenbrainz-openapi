@@ -12,7 +12,7 @@ properties:
       - 'listeners'
       - 'release_group_mbid'
       - 'release_group_name'
-      - 'stats_range'
+      - 'range'
       - 'to_ts'
       - 'total_listen_count'
       - 'total_user_count'
@@ -47,7 +47,7 @@ properties:
         format: uuid
       release_group_name:
         type: string
-      stats_range:
+      range:
         type: string
       to_ts:
         type: integer

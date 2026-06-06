@@ -4197,7 +4197,7 @@ components:
             user_name: user_name
           - listen_count: 1
             user_name: user_name
-          stats_range: stats_range
+          range: range
           to_ts: 5
           total_listen_count: 5
           total_user_count: 2
@@ -4225,7 +4225,7 @@ components:
             user_name: user_name
           release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           release_group_name: release_group_name
-          stats_range: stats_range
+          range: range
           to_ts: 5
           total_listen_count: 5
           total_user_count: 2
@@ -4445,7 +4445,7 @@ components:
             listen_count: 6
           from_ts: 0
           last_updated: 6
-          stats_range: stats_range
+          range: range
           to_ts: 1
       properties:
         payload:
@@ -5437,6 +5437,11 @@ components:
               artist_name: artist_name
               instrument: instrument
               type: type
+            url_rels:
+            - type: type
+              url: url
+            - type: type
+              url: url
           release:
             album_artist_name: album_artist_name
             caa_id: 5
@@ -6662,7 +6667,7 @@ components:
           type: string
         url_rels:
           items:
-            $ref: "#/components/schemas/mbidMapping_url_rels_inner"
+            $ref: "#/components/schemas/url_rels"
           type: array
       type: object
     musicBrainzArtist:
@@ -6768,6 +6773,16 @@ components:
         crowdfunding:
           type: string
         blog:
+          type: string
+      type: object
+    url_rels:
+      example:
+        type: type
+        url: url
+      properties:
+        type:
+          type: string
+        url:
           type: string
       type: object
     metadata:
@@ -8218,7 +8233,7 @@ components:
         retry:
           type: boolean
         message:
-          description: Optional error message from the import service"
+          description: Optional error message from the import service
           type: string
       type: object
     lbRadioRecordingsForArtist_value_inner:
@@ -8958,7 +8973,7 @@ components:
           user_name: user_name
         - listen_count: 1
           user_name: user_name
-        stats_range: stats_range
+        range: range
         to_ts: 5
         total_listen_count: 5
         total_user_count: 2
@@ -8976,7 +8991,7 @@ components:
           items:
             $ref: "#/components/schemas/listenersForArtist_payload_listeners_inner"
           type: array
-        stats_range:
+        range:
           type: string
         to_ts:
           type: integer
@@ -8990,7 +9005,7 @@ components:
       - from_ts
       - last_updated
       - listeners
-      - stats_range
+      - range
       - to_ts
       - total_listen_count
       - total_user_count
@@ -9012,7 +9027,7 @@ components:
           user_name: user_name
         release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         release_group_name: release_group_name
-        stats_range: stats_range
+        range: range
         to_ts: 5
         total_listen_count: 5
         total_user_count: 2
@@ -9042,7 +9057,7 @@ components:
           type: string
         release_group_name:
           type: string
-        stats_range:
+        range:
           type: string
         to_ts:
           type: integer
@@ -9058,9 +9073,9 @@ components:
       - from_ts
       - last_updated
       - listeners
+      - range
       - release_group_mbid
       - release_group_name
-      - stats_range
       - to_ts
       - total_listen_count
       - total_user_count
@@ -9457,7 +9472,7 @@ components:
           listen_count: 6
         from_ts: 0
         last_updated: 6
-        stats_range: stats_range
+        range: range
         to_ts: 1
       properties:
         artist_map:
@@ -9468,7 +9483,7 @@ components:
           type: integer
         last_updated:
           type: integer
-        stats_range:
+        range:
           type: string
         to_ts:
           type: integer
@@ -10970,23 +10985,6 @@ components:
           type: string
       type: object
     recordingMetadata_recording:
-      example:
-        first_release_date: 2000-01-23
-        isrcs:
-        - isrcs
-        - isrcs
-        items: items
-        length: 1
-        name: name
-        rels:
-        - artist_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          artist_name: artist_name
-          instrument: instrument
-          type: type
-        - artist_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          artist_name: artist_name
-          instrument: instrument
-          type: type
       properties:
         first_release_date:
           format: date
@@ -11072,6 +11070,53 @@ components:
           type: array
         name:
           type: string
+      type: object
+    lookup_metadata_recording:
+      example:
+        first_release_date: 2000-01-23
+        isrcs:
+        - isrcs
+        - isrcs
+        items: items
+        length: 1
+        name: name
+        rels:
+        - artist_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          artist_name: artist_name
+          instrument: instrument
+          type: type
+        - artist_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          artist_name: artist_name
+          instrument: instrument
+          type: type
+        url_rels:
+        - type: type
+          url: url
+        - type: type
+          url: url
+      properties:
+        first_release_date:
+          format: date
+          type: string
+        isrcs:
+          items:
+            description: TODO default missing array inner type to string
+            type: string
+          type: array
+        items:
+          type: string
+        length:
+          type: integer
+        name:
+          type: string
+        rels:
+          items:
+            $ref: "#/components/schemas/rels"
+          type: array
+        url_rels:
+          items:
+            $ref: "#/components/schemas/url_rels"
+          type: array
       type: object
     lookup_metadata_release:
       example:
@@ -11210,6 +11255,11 @@ components:
             artist_name: artist_name
             instrument: instrument
             type: type
+          url_rels:
+          - type: type
+            url: url
+          - type: type
+            url: url
         release:
           album_artist_name: album_artist_name
           caa_id: 5
@@ -11244,7 +11294,7 @@ components:
         artist:
           $ref: "#/components/schemas/recordingMetadata_artist"
         recording:
-          $ref: "#/components/schemas/recordingMetadata_recording"
+          $ref: "#/components/schemas/lookup_metadata_recording"
         release:
           $ref: "#/components/schemas/lookup_metadata_release"
         tag:
@@ -12488,16 +12538,6 @@ components:
         additional_metadata:
           $ref: "#/components/schemas/playlistExtensionPayload_additional_metadata"
       title: playlistExtensionPayload
-      type: object
-    mbidMapping_url_rels_inner:
-      example:
-        type: type
-        url: url
-      properties:
-        type:
-          type: string
-        url:
-          type: string
       type: object
   securitySchemes:
     ApiKeyAuth:

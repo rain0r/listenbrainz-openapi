@@ -4,6 +4,8 @@ get:
     - lbPopularity
   summary: |-
     Get a list of all recordings ever pinned by a user with given user_name in descending order of the time they were originally pinned.
+  security:
+    - ApiKeyAuth: []    
   parameters:
     - name: artist_mbid
       in: path

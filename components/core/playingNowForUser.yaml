@@ -17,6 +17,8 @@ properties:
           properties:
             playing_now:
               type: 'boolean'
+            user_name:
+              type: string
             track_metadata:
               $ref: '../common/trackMetadata.yaml'
       playing_now:

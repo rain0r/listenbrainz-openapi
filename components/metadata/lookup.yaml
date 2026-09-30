@@ -55,7 +55,7 @@ properties:
           url_rels:
             type: array
             items:
-              $ref: '../common/url_rels.yaml'
+              $ref: '../common/urlRels.yaml'
         type: object
       release:
         properties:

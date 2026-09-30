@@ -33,6 +33,8 @@ tags:
     description: Various ListenBrainz API endpoints that are not documented elsewhere.
   - name: lbArt
     description: ListenBrainz has a (cover) art infrastructure that creates new cover art from a user's statistics or a user's instructions on how to composite a cover art grid.
+  - name: lbUserhistoryexports
+    description: Use this API to retrieve a user’s listening history, either in full or within an optional time range, for example when initializing a third-party application, doing local analysis, or importing data into an MCP server.
 paths:
   # Core
   '/1/search/users':
@@ -232,6 +234,17 @@ paths:
     $ref: 'paths/art/createCustomCoverArt.yaml'
   '/1/art/year-in-music/{year}/{user_name}':
     $ref: 'paths/art/yearInMusic.yaml'
+  # User History Exports
+  '/1/export/':
+    $ref: 'paths/userhistoryexports/queueAnExport.yaml'
+  '/1/export/list':
+    $ref: 'paths/userhistoryexports/getExportObjectList.yaml'
+  '/1/export/{export_id}':
+    $ref: 'paths/userhistoryexports/getExportObject.yaml'
+  '/1/export/{export_id}/download':
+    $ref: 'paths/userhistoryexports/downloadExportObject.yaml'
+  '/1/export/{export_id}/delete':
+    $ref: 'paths/userhistoryexports/removeExportRecord.yaml'
 components:
   securitySchemes:
     ApiKeyAuth: # arbitrary name for the security scheme

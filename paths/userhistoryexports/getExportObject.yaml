@@ -1,0 +1,27 @@
+get:
+  operationId: getExportObject
+  tags:
+    - lbUserhistoryexports
+  summary: |-
+    Return the export object for this integer ID.
+  parameters:
+    - name: export_id
+      in: path
+      required: true
+      schema:
+        type: integer
+  security:
+    - ApiKeyAuth: []
+  requestBody:
+    required: false
+  responses:
+    '200':
+      description: Export list returned
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/common/exportObject.yaml'
+    '401':
+      description: Invalid authorization.
+    '404':
+      description: Export does not exist or belongs to another account.

@@ -1,0 +1,60 @@
+type: object
+description: A single export record for a user's data.
+required:
+  - available_until
+  - created
+  - end_time
+  - export_id
+  - filename
+  - progress
+  - start_time
+  - status
+  - type
+properties:
+  available_until:
+    type: string
+    format: date-time
+    nullable: true
+    description: A completed export normally remains available for 30 days after completion.
+    example: '2026-10-17T12:00:00+00:00'
+  created:
+    type: string
+    format: date-time
+    description: Timestamp of when the export request was created (UTC).
+    example: '2026-09-17T12:00:00+00:00'
+  end_time:
+    type: integer
+    description: Optional inclusive end of the listen range, in UNIX seconds.
+  export_id:
+    type: integer
+    description: Unique identifier for the data export request.
+    example: 123
+  filename:
+    type: string
+    description: Name of the generated archive file.
+    pattern: '^listenbrainz_.+_\\d+\\.zip$'
+  progress:
+    type: string
+    description: Same as status, but human readable.
+    example: 'Your data export will start soon.'
+  start_time:
+    type: integer
+    description: Optional inclusive start of the listen range, in UNIX seconds.
+  status:
+    type: string
+    enum:
+      - in_progress
+      - completed
+      - failed
+      - pending
+      - waiting
+    description: Current state of the export.
+  type:
+    type: string
+    description: The kind of export being requested.
+    enum:
+      - delete_listens
+      - delete_user
+      - export_all_user_data
+      - import_listens
+    example: export_all_user_data

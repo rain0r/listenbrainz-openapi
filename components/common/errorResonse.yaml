@@ -1,0 +1,13 @@
+type: object
+properties:
+  code:
+    type: integer
+    minimum: 400
+    maximum: 599
+    description: HTTP status code indicating the type of error.
+    example: 429
+  error:
+    type: string
+    description: Human-readable explanation of what went wrong.
+    example: 'You have exceeded your rate limit. See the X-RateLimit-* response headers for more information on your current rate limit.'
+additionalProperties: false

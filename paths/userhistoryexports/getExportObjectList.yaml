@@ -1,0 +1,22 @@
+get:
+  operationId: getExportObjectList
+  tags:
+    - lbUserhistoryexports
+  summary: |-
+    Return a JSON array of the authenticated user’s export objects, newest first. An account with no exports receives an empty list. There are no pagination parameters.
+  security:
+    - ApiKeyAuth: []
+  requestBody:
+    required: false
+  responses:
+    '200':
+      description: Export list returned
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              # $ref: '../../components/userhistoryexports/getExportObjectListResponse.yaml'
+              $ref: '../../components/common/exportObject.yaml'
+    '401':
+      description: Invalid authorization.

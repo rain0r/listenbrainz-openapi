@@ -1,0 +1,7 @@
+properties:
+  start_time:
+    type: integer
+    description: Optional inclusive start of the listen range, in UNIX seconds.
+  end_time:
+    type: integer
+    description: Optional inclusive end of the listen range, in UNIX seconds.

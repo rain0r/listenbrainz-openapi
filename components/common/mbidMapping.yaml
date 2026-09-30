@@ -29,8 +29,11 @@ properties:
   release_mbid:
     type: string
     format: uuid
+  release_group_mbid:
+    type: string
+    format: uuid  
   url_rels:
     type: array
     items:
-      $ref: '../common/url_rels.yaml'
+      $ref: '../common/urlRels.yaml'
 type: object

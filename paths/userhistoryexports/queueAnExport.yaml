@@ -1,0 +1,25 @@
+post:
+  operationId: queueAnExport
+  tags:
+    - lbUserhistoryexports
+  summary: |-
+    Queue an export for the authenticated user. No request body is required.
+  security:
+    - ApiKeyAuth: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/userhistoryexports/queueAnExport.yaml'
+    required: false
+  responses:
+    '200':
+      description: Successful query, you have feed listen-events!
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/userhistoryexports/queueAnExportResponse.yaml'
+    '400':
+      description: Invalid time bounds or request body, or an export is already pending.
+    '401':
+      description: Invalid authorization.

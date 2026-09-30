@@ -1,0 +1,36 @@
+post:
+  operationId: removeExportRecord
+  tags:
+    - lbUserhistoryexports
+  summary: |-
+    Remove the export record and its queued task. No request body is required. Archive storage is reclaimed asynchronously. Deleting an already running export does not guarantee that the worker stops immediately. Exports are shared by the user’s clients; do not automatically delete one that another client may still be downloading.
+  parameters:
+    - name: export_id
+      in: path
+      required: true
+      schema:
+        type: integer
+  security:
+    - ApiKeyAuth: []
+  requestBody:
+    required: false
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: string
+            properties:
+              success:
+                type: boolean
+                description: Whether the operation succeeded.
+    '400':
+      description: Export does not exist or belongs to another account.
+    '401':
+      description: Invalid authorization.
+    '429':
+      description: Rate limiting.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/common/errorResonse.yaml'

@@ -6,7 +6,7 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   termsOfService: https://listenbrainz.org/terms-of-service/
   title: ListenBrainz Swagger - OpenAPI 3.0
-  version: v-2025-11-04.0
+  version: v-2026-09-30.0
 servers:
 - url: https://api.listenbrainz.org
 tags:

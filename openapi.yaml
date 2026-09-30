@@ -6668,16 +6668,6 @@ components:
           - import_listens
           example: export_all_user_data
           type: string
-      required:
-      - available_until
-      - created
-      - end_time
-      - export_id
-      - filename
-      - progress
-      - start_time
-      - status
-      - type
       type: object
     errorResonse:
       additionalProperties: false

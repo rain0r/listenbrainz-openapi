@@ -16,7 +16,6 @@ get:
           schema:
             type: array
             items:
-              # $ref: '../../components/userhistoryexports/getExportObjectListResponse.yaml'
               $ref: '../../components/common/exportObject.yaml'
     '401':
       description: Invalid authorization.

@@ -1,15 +1,5 @@
 type: object
 description: A single export record for a user's data.
-required:
-  - available_until
-  - created
-  - end_time
-  - export_id
-  - filename
-  - progress
-  - start_time
-  - status
-  - type
 properties:
   available_until:
     type: string

@@ -39,6 +39,10 @@ tags:
     art from a user's statistics or a user's instructions on how to composite a cover
     art grid.
   name: lbArt
+- description: "Use this API to retrieve a user’s listening history, either in full\
+    \ or within an optional time range, for example when initializing a third-party\
+    \ application, doing local analysis, or importing data into an MCP server."
+  name: lbUserhistoryexports
 paths:
   /1/search/users:
     get:
@@ -1894,6 +1898,8 @@ paths:
           description: "Invalid query parameters, see error message for details."
         "404":
           description: The requested user was not found.
+      security:
+      - ApiKeyAuth: []
       summary: Get a list of all recordings ever pinned by a user with given user_name
         in descending order of the time they were originally pinned.
       tags:
@@ -3176,6 +3182,154 @@ paths:
       summary: Create the shareable svg image using YIM stats.
       tags:
       - lbArt
+  /1/export/:
+    post:
+      operationId: queueAnExport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/queueAnExport"
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/queueAnExportResponse"
+          description: "Successful query, you have feed listen-events!"
+        "400":
+          description: "Invalid time bounds or request body, or an export is already\
+            \ pending."
+        "401":
+          description: Invalid authorization.
+      security:
+      - ApiKeyAuth: []
+      summary: Queue an export for the authenticated user. No request body is required.
+      tags:
+      - lbUserhistoryexports
+  /1/export/list:
+    get:
+      operationId: getExportObjectList
+      requestBody:
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/exportObject"
+                type: array
+          description: Export list returned
+        "401":
+          description: Invalid authorization.
+      security:
+      - ApiKeyAuth: []
+      summary: "Return a JSON array of the authenticated user’s export objects, newest\
+        \ first. An account with no exports receives an empty list. There are no pagination\
+        \ parameters."
+      tags:
+      - lbUserhistoryexports
+  /1/export/{export_id}:
+    get:
+      operationId: getExportObject
+      parameters:
+      - in: path
+        name: export_id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/exportObject"
+          description: Export list returned
+        "401":
+          description: Invalid authorization.
+        "404":
+          description: Export does not exist or belongs to another account.
+      security:
+      - ApiKeyAuth: []
+      summary: Return the export object for this integer ID.
+      tags:
+      - lbUserhistoryexports
+  /1/export/{export_id}/download:
+    get:
+      operationId: downloadExportObject
+      parameters:
+      - in: path
+        name: export_id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: false
+      responses:
+        "200":
+          content:
+            application/zip:
+              schema:
+                format: binary
+                type: string
+          description: Archive returned
+        "401":
+          description: Invalid authorization.
+        "404":
+          description: "Export is not completed, is missing, belongs to another account,\
+            \ or its archive is no longer available."
+      security:
+      - ApiKeyAuth: []
+      summary: "Download the completed archive. No JSON request body is required.\
+        \ Byte-range/resumable downloads are not currently supported; an interrupted\
+        \ download must restart using the same export ID, without generating a new\
+        \ job."
+      tags:
+      - lbUserhistoryexports
+  /1/export/{export_id}/delete:
+    post:
+      operationId: removeExportRecord
+      parameters:
+      - in: path
+        name: export_id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                properties:
+                  success:
+                    description: Whether the operation succeeded.
+                    type: boolean
+                type: string
+        "400":
+          description: Export does not exist or belongs to another account.
+        "401":
+          description: Invalid authorization.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/errorResonse"
+          description: Rate limiting.
+      security:
+      - ApiKeyAuth: []
+      summary: Remove the export record and its queued task. No request body is required.
+        Archive storage is reclaimed asynchronously. Deleting an already running export
+        does not guarantee that the worker stops immediately. Exports are shared by
+        the user’s clients; do not automatically delete one that another client may
+        still be downloading.
+      tags:
+      - lbUserhistoryexports
 components:
   schemas:
     YearInMusicImage:
@@ -3359,6 +3513,7 @@ components:
                 recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 url_rels:
                 - type: type
                   url: url
@@ -3441,6 +3596,7 @@ components:
                 recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 url_rels:
                 - type: type
                   url: url
@@ -3473,6 +3629,7 @@ components:
           count: 0
           listens:
           - playing_now: true
+            user_name: user_name
             track_metadata:
               additional_info:
                 media_player: media_player
@@ -3544,6 +3701,7 @@ components:
                 recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 url_rels:
                 - type: type
                   url: url
@@ -3552,6 +3710,7 @@ components:
               release_name: release_name
               track_name: track_name
           - playing_now: true
+            user_name: user_name
             track_metadata:
               additional_info:
                 media_player: media_player
@@ -3623,6 +3782,7 @@ components:
                 recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 url_rels:
                 - type: type
                   url: url
@@ -4949,6 +5109,7 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
               - type: type
                 url: url
@@ -5032,6 +5193,7 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
               - type: type
                 url: url
@@ -5126,6 +5288,7 @@ components:
           recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           recording_name: recording_name
           release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           url_rels:
           - type: type
             url: url
@@ -5229,6 +5392,7 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
               - type: type
                 url: url
@@ -5313,6 +5477,7 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
               - type: type
                 url: url
@@ -5670,6 +5835,7 @@ components:
                   recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                   recording_name: recording_name
                   release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                  release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                   url_rels:
                   - type: type
                     url: url
@@ -5765,6 +5931,7 @@ components:
                   recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                   recording_name: recording_name
                   release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                  release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                   url_rels:
                   - type: type
                     url: url
@@ -5869,6 +6036,7 @@ components:
                   recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                   recording_name: recording_name
                   release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                  release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                   url_rels:
                   - type: type
                     url: url
@@ -5963,6 +6131,7 @@ components:
                   recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                   recording_name: recording_name
                   release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                  release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                   url_rels:
                   - type: type
                     url: url
@@ -6353,6 +6522,182 @@ components:
       - skip-missing
       - tiles
       type: object
+    queueAnExport:
+      properties:
+        start_time:
+          description: "Optional inclusive start of the listen range, in UNIX seconds."
+          type: integer
+        end_time:
+          description: "Optional inclusive end of the listen range, in UNIX seconds."
+          type: integer
+      type: object
+    queueAnExportResponse:
+      example:
+        export_id: 123
+        type: export_all_user_data
+        available_until: 2026-10-17T12:00:00Z
+        created: 2026-09-17T12:00:00Z
+        progress: Your data export will start soon.
+        status: waiting
+        filename: user_export_123.zip
+        start_time: 2026-09-17T12:05:00Z
+        end_time: 2026-09-17T12:12:30Z
+      properties:
+        export_id:
+          description: Unique identifier for the data export request.
+          example: 123
+          type: integer
+        type:
+          description: The kind of export being requested.
+          enum:
+          - delete_listens
+          - delete_user
+          - export_all_user_data
+          - import_listens
+          example: export_all_user_data
+          type: string
+        available_until:
+          description: A completed export normally remains available for 30 days after
+            completion.
+          example: 2026-10-17T12:00:00Z
+          format: date-time
+          nullable: true
+          type: string
+        created:
+          description: Timestamp of when the export request was created (UTC).
+          example: 2026-09-17T12:00:00Z
+          format: date-time
+          type: string
+        progress:
+          description: "Same as status, but human readable."
+          example: Your data export will start soon.
+          type: string
+        status:
+          description: Status of the export request.
+          enum:
+          - in_progress
+          - completed
+          - failed
+          - pending
+          - waiting
+          example: waiting
+          type: string
+        filename:
+          description: "Name of the generated export file, present once the export\
+            \ completes."
+          example: user_export_123.zip
+          nullable: true
+          type: string
+        start_time:
+          description: "Optional inclusive start of the listen range, in UNIX seconds."
+          example: 2026-09-17T12:05:00Z
+          format: date-time
+          nullable: true
+          type: string
+        end_time:
+          description: "Optional inclusive end of the listen range, in UNIX seconds."
+          example: 2026-09-17T12:12:30Z
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - created
+      - export_id
+      - progress
+      - status
+      - type
+      type: object
+    exportObject:
+      description: A single export record for a user's data.
+      example:
+        available_until: 2026-10-17T12:00:00Z
+        created: 2026-09-17T12:00:00Z
+        end_time: 0
+        export_id: 123
+        filename: filename
+        progress: Your data export will start soon.
+        start_time: 6
+        status: in_progress
+        type: export_all_user_data
+      properties:
+        available_until:
+          description: A completed export normally remains available for 30 days after
+            completion.
+          example: 2026-10-17T12:00:00Z
+          format: date-time
+          nullable: true
+          type: string
+        created:
+          description: Timestamp of when the export request was created (UTC).
+          example: 2026-09-17T12:00:00Z
+          format: date-time
+          type: string
+        end_time:
+          description: "Optional inclusive end of the listen range, in UNIX seconds."
+          type: integer
+        export_id:
+          description: Unique identifier for the data export request.
+          example: 123
+          type: integer
+        filename:
+          description: Name of the generated archive file.
+          pattern: ^listenbrainz_.+_\\d+\\.zip$
+          type: string
+        progress:
+          description: "Same as status, but human readable."
+          example: Your data export will start soon.
+          type: string
+        start_time:
+          description: "Optional inclusive start of the listen range, in UNIX seconds."
+          type: integer
+        status:
+          description: Current state of the export.
+          enum:
+          - in_progress
+          - completed
+          - failed
+          - pending
+          - waiting
+          type: string
+        type:
+          description: The kind of export being requested.
+          enum:
+          - delete_listens
+          - delete_user
+          - export_all_user_data
+          - import_listens
+          example: export_all_user_data
+          type: string
+      required:
+      - available_until
+      - created
+      - end_time
+      - export_id
+      - filename
+      - progress
+      - start_time
+      - status
+      - type
+      type: object
+    errorResonse:
+      additionalProperties: false
+      example:
+        code: 429
+        error: You have exceeded your rate limit. See the X-RateLimit-* response headers
+          for more information on your current rate limit.
+      properties:
+        code:
+          description: HTTP status code indicating the type of error.
+          example: 429
+          maximum: 599
+          minimum: 400
+          type: integer
+        error:
+          description: Human-readable explanation of what went wrong.
+          example: You have exceeded your rate limit. See the X-RateLimit-* response
+            headers for more information on your current rate limit.
+          type: string
+      type: object
     releaseGroups:
       items:
         $ref: "#/components/schemas/releaseGroups_inner"
@@ -6453,6 +6798,7 @@ components:
             recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             url_rels:
             - type: type
               url: url
@@ -6637,6 +6983,7 @@ components:
         recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         recording_name: recording_name
         release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         url_rels:
         - type: type
           url: url
@@ -6665,9 +7012,12 @@ components:
         release_mbid:
           format: uuid
           type: string
+        release_group_mbid:
+          format: uuid
+          type: string
         url_rels:
           items:
-            $ref: "#/components/schemas/url_rels"
+            $ref: "#/components/schemas/urlRels"
           type: array
       type: object
     musicBrainzArtist:
@@ -6775,7 +7125,7 @@ components:
         blog:
           type: string
       type: object
-    url_rels:
+    urlRels:
       example:
         type: type
         url: url
@@ -6868,6 +7218,7 @@ components:
             recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             url_rels:
             - type: type
               url: url
@@ -7113,6 +7464,7 @@ components:
             recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             url_rels:
             - type: type
               url: url
@@ -7218,6 +7570,7 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
               - type: type
                 url: url
@@ -7308,6 +7661,7 @@ components:
             recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             url_rels:
             - type: type
               url: url
@@ -7413,6 +7767,7 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
               - type: type
                 url: url
@@ -7707,6 +8062,7 @@ components:
             recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             url_rels:
             - type: type
               url: url
@@ -7806,6 +8162,7 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
               - type: type
                 url: url
@@ -7888,6 +8245,7 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
               - type: type
                 url: url
@@ -7924,6 +8282,7 @@ components:
     playingNowForUser_payload_listens_inner:
       example:
         playing_now: true
+        user_name: user_name
         track_metadata:
           additional_info:
             media_player: media_player
@@ -7995,6 +8354,7 @@ components:
             recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             url_rels:
             - type: type
               url: url
@@ -8005,6 +8365,8 @@ components:
       properties:
         playing_now:
           type: boolean
+        user_name:
+          type: string
         track_metadata:
           $ref: "#/components/schemas/trackMetadata"
       type: object
@@ -8013,6 +8375,7 @@ components:
         count: 0
         listens:
         - playing_now: true
+          user_name: user_name
           track_metadata:
             additional_info:
               media_player: media_player
@@ -8084,6 +8447,7 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
               - type: type
                 url: url
@@ -8092,6 +8456,7 @@ components:
             release_name: release_name
             track_name: track_name
         - playing_now: true
+          user_name: user_name
           track_metadata:
             additional_info:
               media_player: media_player
@@ -8163,6 +8528,7 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
               - type: type
                 url: url
@@ -10471,6 +10837,7 @@ components:
             recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             recording_name: recording_name
             release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             url_rels:
             - type: type
               url: url
@@ -11115,7 +11482,7 @@ components:
           type: array
         url_rels:
           items:
-            $ref: "#/components/schemas/url_rels"
+            $ref: "#/components/schemas/urlRels"
           type: array
       type: object
     lookup_metadata_release:
@@ -11429,6 +11796,7 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
               - type: type
                 url: url
@@ -11546,6 +11914,7 @@ components:
                 recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 url_rels:
                 - type: type
                   url: url
@@ -11641,6 +12010,7 @@ components:
                 recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 url_rels:
                 - type: type
                   url: url
@@ -11748,6 +12118,7 @@ components:
               recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               recording_name: recording_name
               release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url_rels:
               - type: type
                 url: url
@@ -11862,6 +12233,7 @@ components:
                 recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 url_rels:
                 - type: type
                   url: url
@@ -11956,6 +12328,7 @@ components:
                 recording_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 recording_name: recording_name
                 release_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                release_group_mbid: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 url_rels:
                 - type: type
                   url: url

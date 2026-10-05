@@ -12904,6 +12904,8 @@ components:
       type: object
   securitySchemes:
     ApiKeyAuth:
+      description: "You must add the `Token` prefix: `Token <user-token>`. Copy the\
+        \ user-token from your ListenBrainz account settings."
       in: header
       name: Authorization
       type: apiKey

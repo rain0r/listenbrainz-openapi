@@ -251,6 +251,7 @@ components:
       type: apiKey
       in: header # can be 'header', 'query' or 'cookie'
       name: 'Authorization' # name of the header, query parameter or cookie
+      description: "You must add the `Token` prefix: `Token <user-token>`. Copy the user-token from your ListenBrainz account settings."
   schemas:
     YearInMusicImage:
       type: string
